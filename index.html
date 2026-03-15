@@ -1,33 +1,188 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ecommerce</title>
-<link rel="stylesheet" href="css/style.css">
+    <title>Ecommerce - Home</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-
 <body>
 
-<header>
-<div class="logo">Shop</div>
+    <!-- Header Section (Your existing code with minor enhancements) -->
+    <header>
+        <div class="logo">Shop<span class="logo-dot">.</span></div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-container">
+            <input type="text" placeholder="Search products...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+        
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
 
-<nav>
-<ul>
-<li>Home</li>
-<li>Products</li>
-<li>Contact</li>
-</ul>
-</nav>
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Summer Collection 2026</h1>
+                <p>Discover the latest trends in fashion</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-primary">Shop Now</a>
+                    <a href="#" class="btn btn-secondary">View Collection</a>
+                </div>
+            </div>
+        </section>
 
-<input type="text" placeholder="Search products">
+        <!-- Featured Categories -->
+        <section class="categories">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x300" alt="Men's Fashion">
+                    <h3>Men's Fashion</h3>
+                    <a href="#" class="btn-small">Shop Now →</a>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x300" alt="Women's Fashion">
+                    <h3>Women's Fashion</h3>
+                    <a href="#" class="btn-small">Shop Now →</a>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x300" alt="Accessories">
+                    <h3>Accessories</h3>
+                    <a href="#" class="btn-small">Shop Now →</a>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x300" alt="Footwear">
+                    <h3>Footwear</h3>
+                    <a href="#" class="btn-small">Shop Now →</a>
+                </div>
+            </div>
+        </section>
 
-</header>
+        <!-- Featured Products -->
+        <section class="featured-products">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="product-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/250x300" alt="Product 1">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Classic White Shirt</h3>
+                        <p class="product-price">$49.99</p>
+                        <button class="btn-add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
 
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/250x300" alt="Product 2">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Denim Jacket</h3>
+                        <p class="product-price">$89.99</p>
+                        <button class="btn-add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
 
-<footer>
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/250x300" alt="Product 3">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Leather Shoes</h3>
+                        <p class="product-price">$129.99</p>
+                        <button class="btn-add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
 
-<p>© 2026 Ecommerce Website</p>
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/250x300" alt="Product 4">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Casual Watch</h3>
+                        <p class="product-price">$199.99</p>
+                        <button class="btn-add-to-cart">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-</footer>
+    <!-- Footer (Your existing enhanced footer) -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <p>Your one-stop fashion destination</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Footwear</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-envelope"></i> info@shop.com</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Ecommerce Website. All rights reserved.</p>
+        </div>
+    </footer>
 
 </body>
 </html>
