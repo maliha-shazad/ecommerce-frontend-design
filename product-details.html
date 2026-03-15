@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ecommerce - Product Details</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">Shop<span class="logo-dot">.</span></div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+            <button type="submit" id="searchButton"><i class="fas fa-search"></i></button>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+        
+        <div class="cart-icon">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <div class="container">
+                <a href="index.html">Home</a> > 
+                <a href="products.html">Products</a> > 
+                <span>Classic White Shirt</span>
+            </div>
+        </div>
+
+        <!-- Product Details Section -->
+        <section class="product-details">
+            <div class="container">
+                <div class="product-details-wrapper">
+                    <!-- Product Images -->
+                    <div class="product-images">
+                        <div class="main-image">
+                            <img src="https://via.placeholder.com/500x600" alt="Product Main Image" id="mainProductImage">
+                        </div>
+                        <div class="thumbnail-images">
+                            <img src="https://via.placeholder.com/100x100" alt="Thumbnail 1" class="thumbnail active" onclick="changeImage(this.src)">
+                            <img src="https://via.placeholder.com/100x100" alt="Thumbnail 2" class="thumbnail" onclick="changeImage(this.src)">
+                            <img src="https://via.placeholder.com/100x100" alt="Thumbnail 3" class="thumbnail" onclick="changeImage(this.src)">
+                            <img src="https://via.placeholder.com/100x100" alt="Thumbnail 4" class="thumbnail" onclick="changeImage(this.src)">
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="product-info-details">
+                        <h1>Classic White Shirt</h1>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5/5 - 120 reviews)</span>
+                        </div>
+                        
+                        <div class="product-price-details">
+                            <span class="current-price">$49.99</span>
+                            <span class="original-price">$69.99</span>
+                            <span class="discount">-30%</span>
+                        </div>
+
+                        <p class="product-description">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                        </p>
+
+                        <!-- Size Selection Dropdown -->
+                        <div class="size-selection">
+                            <label for="size">Select Size:</label>
+                            <select id="size" class="size-dropdown">
+                                <option value="">Choose a size</option>
+                                <option value="S">Small (S)</option>
+                                <option value="M">Medium (M)</option>
+                                <option value="L">Large (L)</option>
+                                <option value="XL">Extra Large (XL)</option>
+                                <option value="XXL">Double Extra Large (XXL)</option>
+                            </select>
+                        </div>
+
+                        <!-- Color Selection -->
+                        <div class="color-selection">
+                            <label>Color:</label>
+                            <div class="color-options">
+                                <span class="color-dot white active" data-color="white"></span>
+                                <span class="color-dot black" data-color="black"></span>
+                                <span class="color-dot blue" data-color="blue"></span>
+                                <span class="color-dot gray" data-color="gray"></span>
+                            </div>
+                        </div>
+
+                        <!-- Quantity -->
+                        <div class="quantity-selector">
+                            <label>Quantity:</label>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
+                                <input type="number" id="quantity" value="1" min="1" max="10">
+                                <button class="quantity-btn" onclick="increaseQuantity()">+</button>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="product-actions">
+                            <button class="btn-add-to-cart-details" onclick="addToCart()">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn-buy-now" onclick="buyNow()">
+                                Buy Now
+                            </button>
+                            <button class="btn-wishlist">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+
+                        <!-- Additional Info -->
+                        <div class="additional-info">
+                            <div class="info-item">
+                                <i class="fas fa-truck"></i>
+                                <span>Free shipping on orders over $50</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-undo"></i>
+                                <span>30-day easy returns</span>
+                            </div>
+                            <div class="info-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>2-year warranty</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Customer Reviews Section -->
+        <section class="customer-reviews">
+            <div class="container">
+                <h2 class="section-title">Customer Reviews</h2>
+                
+                <div class="reviews-summary">
+                    <div class="average-rating">
+                        <span class="big-rating">4.5</span>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <span>Based on 120 reviews</span>
+                    </div>
+                    
+                    <div class="rating-bars">
+                        <div class="rating-bar-item">
+                            <span>5 stars</span>
+                            <div class="bar"><div class="fill" style="width: 70%"></div></div>
+                            <span>70%</span>
+                        </div>
+                        <div class="rating-bar-item">
+                            <span>4 stars</span>
+                            <div class="bar"><div class="fill" style="width: 20%"></div></div>
+                            <span>20%</span>
+                        </div>
+                        <div class="rating-bar-item">
+                            <span>3 stars</span>
+                            <div class="bar"><div class="fill" style="width: 5%"></div></div>
+                            <span>5%</span>
+                        </div>
+                        <div class="rating-bar-item">
+                            <span>2 stars</span>
+                            <div class="bar"><div class="fill" style="width: 3%"></div></div>
+                            <span>3%</span>
+                        </div>
+                        <div class="rating-bar-item">
+                            <span>1 star</span>
+                            <div class="bar"><div class="fill" style="width: 2%"></div></div>
+                            <span>2%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reviews-list">
+                    <!-- Review 1 -->
+                    <div class="review-item">
+                        <div class="reviewer-info">
+                            <img src="https://via.placeholder.com/50x50" alt="Reviewer">
+                            <div>
+                                <h4>John Doe</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">2 days ago</span>
+                        </div>
+                        <p class="review-text">Great product! The material is high quality and fits perfectly. Highly recommended!</p>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-item">
+                        <div class="reviewer-info">
+                            <img src="https://via.placeholder.com/50x50" alt="Reviewer">
+                            <div>
+                                <h4>Jane Smith</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">1 week ago</span>
+                        </div>
+                        <p class="review-text">Very comfortable and stylish. The delivery was fast and packaging was good.</p>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-item">
+                        <div class="reviewer-info">
+                            <img src="https://via.placeholder.com/50x50" alt="Reviewer">
+                            <div>
+                                <h4>Mike Johnson</h4>
+                                <div class="review-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="far fa-star"></i>
+                                </div>
+                            </div>
+                            <span class="review-date">2 weeks ago</span>
+                        </div>
+                        <p class="review-text">Good quality for the price. Would definitely buy again.</p>
+                    </div>
+                </div>
+
+                <button class="btn-load-more">Load More Reviews</button>
+            </div>
+        </section>
+
+        <!-- Related Products Section -->
+        <section class="related-products">
+            <div class="container">
+                <h2 class="section-title">You May Also Like</h2>
+                
+                <div class="product-grid">
+                    <!-- Related Product 1 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/250x300" alt="Related Product 1">
+                            <div class="product-overlay">
+                                <button class="quick-view">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Denim Jacket</h3>
+                            <p class="product-price">$89.99</p>
+                        </div>
+                    </div>
+
+                    <!-- Related Product 2 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/250x300" alt="Related Product 2">
+                            <div class="product-overlay">
+                                <button class="quick-view">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Leather Shoes</h3>
+                            <p class="product-price">$129.99</p>
+                        </div>
+                    </div>
+
+                    <!-- Related Product 3 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/250x300" alt="Related Product 3">
+                            <div class="product-overlay">
+                                <button class="quick-view">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Casual Watch</h3>
+                            <p class="product-price">$199.99</p>
+                        </div>
+                    </div>
+
+                    <!-- Related Product 4 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/250x300" alt="Related Product 4">
+                            <div class="product-overlay">
+                                <button class="quick-view">Quick View</button>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <h3>Sunglasses</h3>
+                            <p class="product-price">$39.99</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Shop</h3>
+                <p>Your one-stop fashion destination</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Shipping</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="#">Men</a></li>
+                    <li><a href="#">Women</a></li>
+                    <li><a href="#">Accessories</a></li>
+                    <li><a href="#">Footwear</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-envelope"></i> info@shop.com</p>
+                <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Ecommerce Website. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
