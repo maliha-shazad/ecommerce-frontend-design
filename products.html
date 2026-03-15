@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ecommerce - Products</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="navigateTo('index.html')" style="cursor: pointer;">Shop<span class="logo-dot">.</span></div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html" class="active">Products</a></li>
+                <li><a href="product-details.html">Product Details</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+            <button type="submit" id="searchButton"><i class="fas fa-search"></i></button>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+        
+        <div class="cart-icon" onclick="navigateTo('cart.html')">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count">0</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title -->
+        <div class="page-header">
+            <h1>All Products</h1>
+            <p>Browse our collection of high-quality products</p>
+        </div>
+
+        <!-- Filters Section -->
+        <section class="filters">
+            <div class="filter-group">
+                <label>Category:</label>
+                <select id="categoryFilter" onchange="filterProducts()">
+                    <option value="all">All Categories</option>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="footwear">Footwear</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Sort By:</label>
+                <select id="sortFilter" onchange="filterProducts()">
+                    <option value="default">Default</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                </select>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-listing">
+            <div class="product-grid" id="productsGrid">
+                <!-- Products will be loaded here via JavaScript -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn prev" onclick="changePage('prev')" disabled>← Prev</button>
+                <button class="page-btn active" onclick="changePage(1)">1</button>
+                <button class="page-btn" onclick="changePage(2)">2</button>
+                <button class="page-btn" onclick="changePage(3)">3</button>
+                <button class="page-btn" onclick="changePage(4)">4</button>
+                <button class="page-btn" onclick="changePage(5)">5</button>
+                <button class="page-btn next" onclick="changePage('next')">Next →</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 onclick="navigateTo('index.html')" style="cursor: pointer;">Shop<span style="color: #ff6b6b;">.</span></h3>
+                <p>Your one-stop fashion destination</p>
+                <div class="social-icons">
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="product-details.html">Product Details</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Categories</h4>
+                <ul>
+                    <li><a href="products.html?category=men">Men</a></li>
+                    <li><a href="products.html?category=women">Women</a></li>
+                    <li><a href="products.html?category=accessories">Accessories</a></li>
+                    <li><a href="products.html?category=footwear">Footwear</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@shop.com">info@shop.com</a></p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 234 567 890</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 Ecommerce Website. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

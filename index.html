@@ -8,30 +8,30 @@
 </head>
 <body>
 
-    <!-- Header Section (Your existing code with minor enhancements) -->
     <header>
-        <div class="logo">Shop<span class="logo-dot">.</span></div>
+        <div class="logo" onclick="navigateTo('index.html')" style="cursor: pointer;">Shop<span class="logo-dot">.</span></div>
         
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="products.html">Products</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="product-details.html">Product Details</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
         
         <div class="search-container">
-            <input type="text" placeholder="Search products...">
-            <button type="submit"><i class="fas fa-search"></i></button>
+            <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off">
+            <button type="submit" id="searchButton"><i class="fas fa-search"></i></button>
+            <div class="search-results" id="searchResults"></div>
         </div>
         
-        <div class="cart-icon">
+        <div class="cart-icon" onclick="navigateTo('cart.html')">
             <i class="fas fa-shopping-cart"></i>
             <span class="cart-count">0</span>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
         <!-- Hero Section -->
         <section class="hero">
@@ -39,8 +39,8 @@
                 <h1>Summer Collection 2026</h1>
                 <p>Discover the latest trends in fashion</p>
                 <div class="hero-buttons">
-                    <a href="#" class="btn btn-primary">Shop Now</a>
-                    <a href="#" class="btn btn-secondary">View Collection</a>
+                    <a href="products.html" class="btn btn-primary">Shop Now</a>
+                    <a href="products.html?category=new" class="btn btn-secondary">View Collection</a>
                 </div>
             </div>
         </section>
@@ -49,25 +49,25 @@
         <section class="categories">
             <h2 class="section-title">Shop by Category</h2>
             <div class="category-grid">
-                <div class="category-card">
+                <div class="category-card" onclick="navigateTo('products.html?category=men')">
                     <img src="https://via.placeholder.com/300x300" alt="Men's Fashion">
                     <h3>Men's Fashion</h3>
-                    <a href="#" class="btn-small">Shop Now →</a>
+                    <a href="products.html?category=men" class="btn-small">Shop Now →</a>
                 </div>
-                <div class="category-card">
+                <div class="category-card" onclick="navigateTo('products.html?category=women')">
                     <img src="https://via.placeholder.com/300x300" alt="Women's Fashion">
                     <h3>Women's Fashion</h3>
-                    <a href="#" class="btn-small">Shop Now →</a>
+                    <a href="products.html?category=women" class="btn-small">Shop Now →</a>
                 </div>
-                <div class="category-card">
+                <div class="category-card" onclick="navigateTo('products.html?category=accessories')">
                     <img src="https://via.placeholder.com/300x300" alt="Accessories">
                     <h3>Accessories</h3>
-                    <a href="#" class="btn-small">Shop Now →</a>
+                    <a href="products.html?category=accessories" class="btn-small">Shop Now →</a>
                 </div>
-                <div class="category-card">
+                <div class="category-card" onclick="navigateTo('products.html?category=footwear')">
                     <img src="https://via.placeholder.com/300x300" alt="Footwear">
                     <h3>Footwear</h3>
-                    <a href="#" class="btn-small">Shop Now →</a>
+                    <a href="products.html?category=footwear" class="btn-small">Shop Now →</a>
                 </div>
             </div>
         </section>
@@ -77,112 +77,117 @@
             <h2 class="section-title">Featured Products</h2>
             <div class="product-grid">
                 <!-- Product Card 1 -->
-                <div class="product-card">
+                <div class="product-card" onclick="navigateTo('product-details.html?id=1')">
                     <div class="product-image">
-                        <img src="https://via.placeholder.com/250x300" alt="Product 1">
+                        <img src="https://via.placeholder.com/250x300" alt="Classic White Shirt">
                         <div class="product-overlay">
-                            <button class="quick-view">Quick View</button>
+                            <button class="quick-view" onclick="event.stopPropagation(); navigateTo('product-details.html?id=1')">Quick View</button>
                         </div>
                     </div>
                     <div class="product-info">
                         <h3>Classic White Shirt</h3>
                         <p class="product-price">$49.99</p>
-                        <button class="btn-add-to-cart">Add to Cart</button>
+                        <button class="btn-add-to-cart" onclick="event.stopPropagation(); addToCartFromCard(1, 'Classic White Shirt', 49.99)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Product Card 2 -->
-                <div class="product-card">
+                <div class="product-card" onclick="navigateTo('product-details.html?id=2')">
                     <div class="product-image">
-                        <img src="https://via.placeholder.com/250x300" alt="Product 2">
+                        <img src="https://via.placeholder.com/250x300/2c3e50" alt="Denim Jacket">
                         <div class="product-overlay">
-                            <button class="quick-view">Quick View</button>
+                            <button class="quick-view" onclick="event.stopPropagation(); navigateTo('product-details.html?id=2')">Quick View</button>
                         </div>
                     </div>
                     <div class="product-info">
                         <h3>Denim Jacket</h3>
                         <p class="product-price">$89.99</p>
-                        <button class="btn-add-to-cart">Add to Cart</button>
+                        <button class="btn-add-to-cart" onclick="event.stopPropagation(); addToCartFromCard(2, 'Denim Jacket', 89.99)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Product Card 3 -->
-                <div class="product-card">
+                <div class="product-card" onclick="navigateTo('product-details.html?id=3')">
                     <div class="product-image">
-                        <img src="https://via.placeholder.com/250x300" alt="Product 3">
+                        <img src="https://via.placeholder.com/250x300/8b4513" alt="Leather Shoes">
                         <div class="product-overlay">
-                            <button class="quick-view">Quick View</button>
+                            <button class="quick-view" onclick="event.stopPropagation(); navigateTo('product-details.html?id=3')">Quick View</button>
                         </div>
                     </div>
                     <div class="product-info">
                         <h3>Leather Shoes</h3>
                         <p class="product-price">$129.99</p>
-                        <button class="btn-add-to-cart">Add to Cart</button>
+                        <button class="btn-add-to-cart" onclick="event.stopPropagation(); addToCartFromCard(3, 'Leather Shoes', 129.99)">Add to Cart</button>
                     </div>
                 </div>
 
                 <!-- Product Card 4 -->
-                <div class="product-card">
+                <div class="product-card" onclick="navigateTo('product-details.html?id=4')">
                     <div class="product-image">
-                        <img src="https://via.placeholder.com/250x300" alt="Product 4">
+                        <img src="https://via.placeholder.com/250x300/c39bd3" alt="Casual Watch">
                         <div class="product-overlay">
-                            <button class="quick-view">Quick View</button>
+                            <button class="quick-view" onclick="event.stopPropagation(); navigateTo('product-details.html?id=4')">Quick View</button>
                         </div>
                     </div>
                     <div class="product-info">
                         <h3>Casual Watch</h3>
                         <p class="product-price">$199.99</p>
-                        <button class="btn-add-to-cart">Add to Cart</button>
+                        <button class="btn-add-to-cart" onclick="event.stopPropagation(); addToCartFromCard(4, 'Casual Watch', 199.99)">Add to Cart</button>
                     </div>
                 </div>
+            </div>
+            <div class="view-all-container">
+                <a href="products.html" class="btn-view-all">View All Products →</a>
             </div>
         </section>
     </main>
 
-    <!-- Footer (Your existing enhanced footer) -->
-    <footer>
+    <footer id="contact">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>Shop</h3>
+                <h3 onclick="navigateTo('index.html')" style="cursor: pointer;">Shop<span style="color: #ff6b6b;">.</span></h3>
                 <p>Your one-stop fashion destination</p>
                 <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
             
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">FAQs</a></li>
-                    <li><a href="#">Shipping</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="product-details.html">Product Details</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h4>Categories</h4>
                 <ul>
-                    <li><a href="#">Men</a></li>
-                    <li><a href="#">Women</a></li>
-                    <li><a href="#">Accessories</a></li>
-                    <li><a href="#">Footwear</a></li>
+                    <li><a href="products.html?category=men">Men</a></li>
+                    <li><a href="products.html?category=women">Women</a></li>
+                    <li><a href="products.html?category=accessories">Accessories</a></li>
+                    <li><a href="products.html?category=footwear">Footwear</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
                 <h4>Contact Info</h4>
-                <p><i class="fas fa-envelope"></i> info@shop.com</p>
-                <p><i class="fas fa-phone"></i> +1 234 567 890</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:info@shop.com">info@shop.com</a></p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 234 567 890</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Business St, City, Country</p>
             </div>
         </div>
         
         <div class="footer-bottom">
-            <p>© 2026 Ecommerce Website. All rights reserved.</p>
+            <p>© 2026 Ecommerce Website. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
         </div>
     </footer>
 
+    <script src="js/script.js"></script>
 </body>
 </html>
