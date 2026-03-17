@@ -3,588 +3,214 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecom-Store Pro - Premium Electronics</title>
+    <title>Ecom Store - B2B Marketplace</title>
     <link rel="stylesheet" href="css/style.css">
-    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- ===== TOP BAR ===== -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-wrapper">
-                <div class="top-bar-left">
-                    <span><i class="fa-regular fa-clock"></i> Mon - Sat: 9:00 - 18:00</span>
-                    <span><i class="fa-regular fa-envelope"></i> support@ecomstore.com</span>
-                </div>
-                <div class="top-bar-right">
-                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                </div>
-            </div>
+    <header>
+        <div class="logo" onclick="navigateTo('index.html')" style="cursor: pointer;">
+            <img src="images/logo.png" alt="Ecom Store" style="height: 40px;">
         </div>
-    </div>
-
-    <!-- ===== HEADER ===== -->
-    <header class="site-header">
-        <div class="container">
-            <div class="header-wrapper">
-                <div class="logo">
-                    <a href="index.html">Ecom<span class="highlight">Store</span></a>
-                </div>
-
-                <nav class="main-nav">
-                    <ul>
-                        <li><a href="index.html" class="active">Home</a></li>
-                        <li><a href="#">Products</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Deals</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </nav>
-
-                <div class="header-actions">
-                    <button class="search-toggle"><i class="fa-solid fa-search"></i></button>
-                    <a href="#" class="wishlist-icon"><i class="fa-regular fa-heart"></i><span class="count">3</span></a>
-                    <a href="#" class="cart-icon"><i class="fa-solid fa-cart-shopping"></i><span class="count">5</span></a>
-                    <button class="mobile-menu-toggle"><i class="fa-solid fa-bars"></i></button>
-                </div>
-            </div>
-            
-            <!-- Search Bar (Hidden by default) -->
-            <div class="search-bar">
-                <input type="text" placeholder="Search for products, brands, categories...">
-                <button><i class="fa-solid fa-search"></i></button>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="find-store.html">Find Store</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="blogs.html">Blogs</a></li>
+            </ul>
+        </nav>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search suppliers..." autocomplete="off">
+            <button type="submit" id="searchButton"><i class="fas fa-search"></i></button>
+            <div class="search-results" id="searchResults"></div>
+        </div>
+        
+        <div class="user-actions">
+            <a href="login.html" class="user-icon"><i class="fas fa-user"></i></a>
+            <a href="register.html" class="user-icon"><i class="fas fa-user-plus"></i></a>
+            <div class="cart-icon" onclick="navigateTo('cart.html')">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-count">0</span>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- ===== HERO SLIDER ===== -->
-        <section class="hero-section">
-            <div class="hero-slider">
-                <div class="hero-slide active">
-                    <div class="container">
-                        <div class="hero-wrapper">
-                            <div class="hero-content">
-                                <span class="hero-subtitle">Latest Trending 2026</span>
-                                <h1>Premium Electronics <br>For Your Lifestyle</h1>
-                                <p class="hero-desc">Discover the latest gadgets with amazing discounts. Shop now and save up to 40% on selected items.</p>
-                                <div class="hero-buttons">
-                                    <a href="#" class="btn btn-primary">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
-                                    <a href="#" class="btn btn-outline">View Deals</a>
-                                </div>
-                                <div class="hero-stats">
-                                    <div class="stat-item">
-                                        <span class="stat-number">10k+</span>
-                                        <span class="stat-label">Happy Customers</span>
-                                    </div>
-                                    <div class="stat-item">
-                                        <span class="stat-number">500+</span>
-                                        <span class="stat-label">Brand Partners</span>
-                                    </div>
-                                    <div class="stat-item">
-                                        <span class="stat-number">24/7</span>
-                                        <span class="stat-label">Support</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="hero-image">
-                                <img src="images/hero-product.png" alt="Electronics Products" onerror="this.src='https://via.placeholder.com/600x500/2a6df4/ffffff?text=Premium+Electronics'">
-                                <div class="floating-badge discount">
-                                    <span class="badge-text">40% OFF</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Latest Trending</h1>
+                <h2 class="sub-headline">Electronics Items</h2>
+                <p class="description">An easy way to send requests to all suppliers</p>
+                <p class="description">Do try us to get amazing discounts and special offers</p>
+                <div class="hero-buttons">
+                    <a href="categories.html" class="btn btn-primary">Browse Categories</a>
+                    <a href="register.html" class="btn btn-secondary">Join as Supplier</a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== BRANDS SECTION ===== -->
-        <section class="brands-section">
-            <div class="container">
-                <div class="brands-wrapper">
-                    <div class="brand-item"><img src="images/brands/samsung.png" alt="Samsung" onerror="this.src='https://via.placeholder.com/120x60/e2e8f0/333?text=Samsung'"></div>
-                    <div class="brand-item"><img src="images/brands/apple.png" alt="Apple" onerror="this.src='https://via.placeholder.com/120x60/e2e8f0/333?text=Apple'"></div>
-                    <div class="brand-item"><img src="images/brands/sony.png" alt="Sony" onerror="this.src='https://via.placeholder.com/120x60/e2e8f0/333?text=Sony'"></div>
-                    <div class="brand-item"><img src="images/brands/lg.png" alt="LG" onerror="this.src='https://via.placeholder.com/120x60/e2e8f0/333?text=LG'"></div>
-                    <div class="brand-item"><img src="images/brands/philips.png" alt="Philips" onerror="this.src='https://via.placeholder.com/120x60/e2e8f0/333?text=Philips'"></div>
-                    <div class="brand-item"><img src="images/brands/panasonic.png" alt="Panasonic" onerror="this.src='https://via.placeholder.com/120x60/e2e8f0/333?text=Panasonic'"></div>
+        <!-- Service Section -->
+        <section class="service-section">
+            <h2 class="section-title">Service Section</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <i class="fas fa-industry"></i>
+                    <h3>Source from Industry Hubs</h3>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cog"></i>
+                    <h3>Customize Your Products</h3>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-ship"></i>
+                    <h3>Fast, reliable shipping by ocean or air</h3>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-clipboard-check"></i>
+                    <h3>Product monitoring and inspection</h3>
                 </div>
             </div>
         </section>
 
-        <!-- ===== CATEGORIES SECTION ===== -->
-        <section class="categories-section">
-            <div class="container">
-                <div class="section-header">
-                    <div>
-                        <span class="section-subtitle">Shop by Category</span>
-                        <h2 class="section-title">Popular Categories</h2>
-                    </div>
-                    <a href="#" class="view-all">View All <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-                
-                <div class="categories-grid">
-                    <!-- Category 1 -->
-                    <div class="category-card large">
-                        <img src="images/categories/smartphones.jpg" alt="Smartphones" onerror="this.src='https://via.placeholder.com/400x300/2a6df4/ffffff?text=Smartphones'">
-                        <div class="category-content">
-                            <h3>Smartphones</h3>
-                            <p>Latest models from top brands</p>
-                            <a href="#" class="category-link">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Category 2 -->
-                    <div class="category-card">
-                        <img src="images/categories/laptops.jpg" alt="Laptops" onerror="this.src='https://via.placeholder.com/300x200/10b981/ffffff?text=Laptops'">
-                        <div class="category-content">
-                            <h3>Laptops</h3>
-                            <a href="#" class="category-link">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Category 3 -->
-                    <div class="category-card">
-                        <img src="images/categories/tablets.jpg" alt="Tablets" onerror="this.src='https://via.placeholder.com/300x200/f59e0b/ffffff?text=Tablets'">
-                        <div class="category-content">
-                            <h3>Tablets</h3>
-                            <a href="#" class="category-link">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Category 4 -->
-                    <div class="category-card">
-                        <img src="images/categories/headphones.jpg" alt="Headphones" onerror="this.src='https://via.placeholder.com/300x200/ef4444/ffffff?text=Headphones'">
-                        <div class="category-content">
-                            <h3>Headphones</h3>
-                            <a href="#" class="category-link">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                    
-                    <!-- Category 5 -->
-                    <div class="category-card">
-                        <img src="images/categories/smartwatches.jpg" alt="Smartwatches" onerror="this.src='https://via.placeholder.com/300x200/8b5cf6/ffffff?text=Smartwatches'">
-                        <div class="category-content">
-                            <h3>Smartwatches</h3>
-                            <a href="#" class="category-link">Shop Now <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== FEATURED PRODUCTS SECTION ===== -->
-        <section class="products-section">
-            <div class="container">
-                <div class="section-header">
-                    <div>
-                        <span class="section-subtitle">Our Collection</span>
-                        <h2 class="section-title">Featured Products</h2>
-                    </div>
-                    <div class="product-filters">
-                        <button class="filter-btn active">All</button>
-                        <button class="filter-btn">New Arrivals</button>
-                        <button class="filter-btn">Best Sellers</button>
-                        <button class="filter-btn">On Sale</button>
-                    </div>
-                </div>
-
-                <div class="products-grid">
-                    <!-- Product 1 -->
-                    <div class="product-card">
-                        <div class="product-badges">
-                            <span class="badge sale">-30%</span>
-                            <span class="badge new">New</span>
-                        </div>
-                        <div class="product-image">
-                            <img src="images/products/samsung-s23.jpg" alt="Samsung Galaxy S23" onerror="this.src='https://via.placeholder.com/300x300/e2e8f0/333?text=Samsung+S23'">
-                            <div class="product-actions">
-                                <button class="action-btn quick-view" title="Quick View"><i class="fa-regular fa-eye"></i></button>
-                                <button class="action-btn add-to-wishlist" title="Add to Wishlist"><i class="fa-regular fa-heart"></i></button>
-                                <button class="action-btn compare" title="Compare"><i class="fa-regular fa-chart-bar"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Smartphones</div>
-                            <h3 class="product-title">Samsung Galaxy S23 Ultra</h3>
-                            <div class="product-rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star-half-stroke"></i>
-                                <span>(245 reviews)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">$899.99</span>
-                                <span class="old-price">$1,199.99</span>
-                            </div>
-                            <button class="add-to-cart-btn">
-                                <i class="fa-solid fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 2 -->
-                    <div class="product-card">
-                        <div class="product-badges">
-                            <span class="badge sale">-25%</span>
-                        </div>
-                        <div class="product-image">
-                            <img src="images/products/macbook-pro.jpg" alt="MacBook Pro" onerror="this.src='https://via.placeholder.com/300x300/e2e8f0/333?text=MacBook+Pro'">
-                            <div class="product-actions">
-                                <button class="action-btn quick-view"><i class="fa-regular fa-eye"></i></button>
-                                <button class="action-btn add-to-wishlist"><i class="fa-regular fa-heart"></i></button>
-                                <button class="action-btn compare"><i class="fa-regular fa-chart-bar"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Laptops</div>
-                            <h3 class="product-title">MacBook Pro 16" M3 Max</h3>
-                            <div class="product-rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <span>(189 reviews)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">$2,499.99</span>
-                                <span class="old-price">$3,299.99</span>
-                            </div>
-                            <button class="add-to-cart-btn">
-                                <i class="fa-solid fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="product-card">
-                        <div class="product-image">
-                            <img src="images/products/sony-xm5.jpg" alt="Sony WH-1000XM5" onerror="this.src='https://via.placeholder.com/300x300/e2e8f0/333?text=Sony+Headphones'">
-                            <div class="product-actions">
-                                <button class="action-btn quick-view"><i class="fa-regular fa-eye"></i></button>
-                                <button class="action-btn add-to-wishlist"><i class="fa-regular fa-heart"></i></button>
-                                <button class="action-btn compare"><i class="fa-regular fa-chart-bar"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Audio</div>
-                            <h3 class="product-title">Sony WH-1000XM5</h3>
-                            <div class="product-rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <span>(567 reviews)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">$349.99</span>
-                            </div>
-                            <button class="add-to-cart-btn">
-                                <i class="fa-solid fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="product-card">
-                        <div class="product-badges">
-                            <span class="badge sale">-20%</span>
-                        </div>
-                        <div class="product-image">
-                            <img src="images/products/apple-watch.jpg" alt="Apple Watch Ultra" onerror="this.src='https://via.placeholder.com/300x300/e2e8f0/333?text=Apple+Watch'">
-                            <div class="product-actions">
-                                <button class="action-btn quick-view"><i class="fa-regular fa-eye"></i></button>
-                                <button class="action-btn add-to-wishlist"><i class="fa-regular fa-heart"></i></button>
-                                <button class="action-btn compare"><i class="fa-regular fa-chart-bar"></i></button>
-                            </div>
-                        </div>
-                        <div class="product-info">
-                            <div class="product-category">Wearables</div>
-                            <h3 class="product-title">Apple Watch Ultra 2</h3>
-                            <div class="product-rating">
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-regular fa-star-half-stroke"></i>
-                                <span>(98 reviews)</span>
-                            </div>
-                            <div class="product-price">
-                                <span class="current-price">$699.99</span>
-                                <span class="old-price">$879.99</span>
-                            </div>
-                            <button class="add-to-cart-btn">
-                                <i class="fa-solid fa-cart-plus"></i> Add to Cart
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="view-more">
-                    <a href="#" class="btn btn-outline">Load More Products <i class="fa-solid fa-arrow-rotate-right"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== PROMO BANNER ===== -->
-        <section class="promo-banner">
-            <div class="container">
-                <div class="promo-wrapper">
-                    <div class="promo-content">
-                        <span class="promo-tagline">Limited Time Offer</span>
-                        <h2>Summer Sale 2026</h2>
-                        <p>Up to 50% off on selected electronics. Hurry, offer ends soon!</p>
-                        <div class="countdown-timer">
-                            <div class="timer-item">
-                                <span class="timer-number">05</span>
-                                <span class="timer-label">Days</span>
-                            </div>
-                            <div class="timer-item">
-                                <span class="timer-number">12</span>
-                                <span class="timer-label">Hours</span>
-                            </div>
-                            <div class="timer-item">
-                                <span class="timer-number">45</span>
-                                <span class="timer-label">Minutes</span>
-                            </div>
-                            <div class="timer-item">
-                                <span class="timer-number">30</span>
-                                <span class="timer-label">Seconds</span>
-                            </div>
-                        </div>
-                        <a href="#" class="btn btn-primary btn-large">Shop the Sale <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                    <div class="promo-image">
-                        <img src="images/promo-summer.png" alt="Summer Sale" onerror="this.src='https://via.placeholder.com/400x300/2a6df4/ffffff?text=Summer+Sale'">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== SERVICES SECTION (Enhanced) ===== -->
-        <section class="services-section">
-            <div class="container">
-                <div class="services-grid">
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fa-solid fa-truck-fast"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Free Shipping</h3>
-                            <p>On orders over $50</p>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fa-solid fa-rotate-left"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Easy Returns</h3>
-                            <p>30-day return policy</p>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fa-solid fa-shield"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>Secure Payment</h3>
-                            <p>100% secure transactions</p>
-                        </div>
-                    </div>
-                    <div class="service-item">
-                        <div class="service-icon">
-                            <i class="fa-solid fa-headset"></i>
-                        </div>
-                        <div class="service-content">
-                            <h3>24/7 Support</h3>
-                            <p>Dedicated customer service</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ===== SUPPLIERS BY REGION (Enhanced) ===== -->
+        <!-- Suppliers by Region -->
         <section class="suppliers-section">
-            <div class="container">
-                <div class="section-header">
-                    <div>
-                        <span class="section-subtitle">Global Network</span>
-                        <h2 class="section-title">Suppliers by Region</h2>
-                    </div>
-                    <p class="section-description">Connect with trusted suppliers from around the world</p>
+            <h2 class="section-title">Suppliers by region</h2>
+            <div class="suppliers-grid">
+                <!-- UAE -->
+                <div class="supplier-card">
+                    <h3>🇦🇪 UAE</h3>
+                    <p class="country">Dubai</p>
+                    <p class="supplier-name">koko.com</p>
+                    <a href="#" class="btn-small">Contact</a>
                 </div>
                 
-                <div class="suppliers-grid-enhanced">
-                    <div class="supplier-card-enhanced">
-                        <div class="supplier-flag uae"></div>
-                        <h4>UAE</h4>
-                        <p class="supplier-name">koko.com</p>
-                        <span class="supplier-products">Electronics, Textiles</span>
-                    </div>
-                    <div class="supplier-card-enhanced">
-                        <div class="supplier-flag china"></div>
-                        <h4>China</h4>
-                        <p class="supplier-name">bananay.com</p>
-                        <span class="supplier-products">Electronics, Manufacturing</span>
-                    </div>
-                    <div class="supplier-card-enhanced">
-                        <div class="supplier-flag dubai"></div>
-                        <h4>Dubai</h4>
-                        <p class="supplier-name">emrsaj.com</p>
-                        <span class="supplier-products">Gold, Electronics</span>
-                    </div>
-                    <div class="supplier-card-enhanced">
-                        <div class="supplier-flag denmark"></div>
-                        <h4>Denmark</h4>
-                        <p class="supplier-name">snowball.com</p>
-                        <span class="supplier-products">Design, Furniture</span>
-                    </div>
-                    <div class="supplier-card-enhanced">
-                        <div class="supplier-flag france"></div>
-                        <h4>France</h4>
-                        <p class="supplier-name">shugaf.com</p>
-                        <span class="supplier-products">Luxury, Cosmetics</span>
-                    </div>
-                    <div class="supplier-card-enhanced">
-                        <div class="supplier-flag greenland"></div>
-                        <h4>Greenland</h4>
-                        <p class="supplier-name">livelife.com</p>
-                        <span class="supplier-products">Seafood, Tourism</span>
-                    </div>
-                    <div class="supplier-card-enhanced">
-                        <div class="supplier-flag italy"></div>
-                        <h4>Italy</h4>
-                        <p class="supplier-name">happycoc.com</p>
-                        <span class="supplier-products">Fashion, Food</span>
-                    </div>
-                    <div class="supplier-card-enhanced">
-                        <div class="supplier-flag russia"></div>
-                        <h4>Russia</h4>
-                        <p class="supplier-name">oidbh.com</p>
-                        <span class="supplier-products">Energy, Technology</span>
-                    </div>
+                <!-- China -->
+                <div class="supplier-card">
+                    <h3>🇨🇳 China</h3>
+                    <p class="country">Shanghai</p>
+                    <p class="supplier-name">bananay.com</p>
+                    <a href="#" class="btn-small">Contact</a>
+                </div>
+                
+                <!-- Dubai -->
+                <div class="supplier-card">
+                    <h3>🇦🇪 Dubai</h3>
+                    <p class="country">UAE</p>
+                    <p class="supplier-name">emrsaj.com</p>
+                    <a href="#" class="btn-small">Contact</a>
+                </div>
+                
+                <!-- Denmark -->
+                <div class="supplier-card">
+                    <h3>🇩🇰 Denmark</h3>
+                    <p class="country">Copenhagen</p>
+                    <p class="supplier-name">snowball.com</p>
+                    <a href="#" class="btn-small">Contact</a>
+                </div>
+                
+                <!-- France -->
+                <div class="supplier-card">
+                    <h3>🇫🇷 France</h3>
+                    <p class="country">Paris</p>
+                    <p class="supplier-name">shugaf.com</p>
+                    <a href="#" class="btn-small">Contact</a>
+                </div>
+                
+                <!-- Greenland -->
+                <div class="supplier-card">
+                    <h3>🇬🇱 Greenland</h3>
+                    <p class="country">Nuuk</p>
+                    <p class="supplier-name">livelife.com</p>
+                    <a href="#" class="btn-small">Contact</a>
+                </div>
+                
+                <!-- Italy -->
+                <div class="supplier-card">
+                    <h3>🇮🇹 Italy</h3>
+                    <p class="country">Milan</p>
+                    <p class="supplier-name">happycoc.com</p>
+                    <a href="#" class="btn-small">Contact</a>
+                </div>
+                
+                <!-- Russia -->
+                <div class="supplier-card">
+                    <h3>🇷🇺 Russia</h3>
+                    <p class="country">Moscow</p>
+                    <p class="supplier-name">oidbh.com</p>
+                    <a href="#" class="btn-small">Contact</a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== NEWSLETTER SECTION (Enhanced) ===== -->
+        <!-- Newsletter Section -->
         <section class="newsletter-section">
             <div class="container">
-                <div class="newsletter-wrapper">
-                    <div class="newsletter-content">
-                        <h2>Subscribe to Our Newsletter</h2>
-                        <p>Get daily news on upcoming offers, new products, and exclusive deals from suppliers worldwide</p>
-                        <form class="newsletter-form-enhanced">
-                            <div class="form-group">
-                                <i class="fa-regular fa-envelope"></i>
-                                <input type="email" placeholder="Your email address">
-                            </div>
-                            <button type="submit" class="btn btn-primary">Subscribe Now</button>
-                        </form>
-                        <p class="form-note">By subscribing, you agree to our Privacy Policy and consent to receive updates.</p>
-                    </div>
-                </div>
+                <h2>Subscribe to our newsletter</h2>
+                <p>Get daily news on upcoming offers from many suppliers all over the world</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
         </section>
     </main>
 
-    <!-- ===== FOOTER (Enhanced) ===== -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-grid-enhanced">
-                <div class="footer-col about-col">
-                    <h3>Ecom<span class="highlight">Store</span></h3>
-                    <p>Your premier destination for the latest electronics and gadgets. We bring you the best products from around the world at competitive prices.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h4>About</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Find Store</a></li>
-                        <li><a href="#">Categories</a></li>
-                        <li><a href="#">Blogs</a></li>
-                        <li><a href="#">Careers</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>Information</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Money Refund</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col">
-                    <h4>For Users</h4>
-                    <ul>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Settings</a></li>
-                        <li><a href="#">My Orders</a></li>
-                        <li><a href="#">Wishlist</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-col contact-col">
-                    <h4>Contact Info</h4>
-                    <ul class="contact-info">
-                        <li><i class="fa-regular fa-envelope"></i> support@ecomstore.com</li>
-                        <li><i class="fa-solid fa-phone"></i> +1 (800) 123-4567</li>
-                        <li><i class="fa-regular fa-clock"></i> Mon - Fri: 9AM - 6PM</li>
-                        <li><i class="fa-solid fa-location-dot"></i> 123 Business Ave, NY 10001</li>
-                    </ul>
-                </div>
+    <footer>
+        <div class="footer-content">
+            <!-- About Column -->
+            <div class="footer-section">
+                <h3>About</h3>
+                <ul>
+                    <li><a href="about.html">About us</a></li>
+                    <li><a href="find-store.html">Find Store</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="blogs.html">Blogs</a></li>
+                </ul>
             </div>
             
-            <div class="footer-bottom-enhanced">
-                <p>&copy; 2026 EcomStore. All rights reserved. Designed with <i class="fa-solid fa-heart" style="color: #ff4d4d;"></i> for premium shopping</p>
-                <div class="payment-methods">
-                    <i class="fa-brands fa-cc-visa"></i>
-                    <i class="fa-brands fa-cc-mastercard"></i>
-                    <i class="fa-brands fa-cc-amex"></i>
-                    <i class="fa-brands fa-cc-paypal"></i>
-                    <i class="fa-brands fa-cc-apple-pay"></i>
-                </div>
+            <!-- Information Column -->
+            <div class="footer-section">
+                <h4>Information</h4>
+                <ul>
+                    <li><a href="help-center.html">help center</a></li>
+                    <li><a href="money-refund.html">Money refund</a></li>
+                    <li><a href="shipping.html">Shipping</a></li>
+                    <li><a href="contact.html">Contact us</a></li>
+                </ul>
             </div>
+            
+            <!-- For Users Column -->
+            <div class="footer-section">
+                <h4>For users</h4>
+                <ul>
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="settings.html">Setting</a></li>
+                    <li><a href="orders.html">My orders</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Column -->
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> support@ecomstore.com</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-map-marker"></i> 123 Business Ave</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Ecom Store. All rights reserved.</p>
         </div>
     </footer>
-
-    <!-- Quick View Modal (Hidden by default) -->
-    <div class="modal" id="quickViewModal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div class="modal-body">
-                <!-- Quick view content will be loaded here -->
-            </div>
-        </div>
-    </div>
 
     <script src="js/script.js"></script>
 </body>
