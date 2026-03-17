@@ -84,6 +84,100 @@
             display: none;
         }
         
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #E9E9E9;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #23A6F0;
+            box-shadow: 0 0 0 3px rgba(35,166,240,0.1);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #23A6F0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #E9E9E9;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+        
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #E9E9E9;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-result-item:hover {
+            background: #F5F5F5;
+        }
+        
+        .search-result-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .search-result-info h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .search-result-info p {
+            color: #23A6F0;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #737373;
+        }
+        
         /* Page Header */
         .page-header {
             background: linear-gradient(135deg, #23A6F0 0%, #1a7dc0 100%);
@@ -322,6 +416,12 @@
                 justify-content: center;
             }
             
+            .search-container {
+                width: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            
             .wishlist-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -462,13 +562,65 @@
             { id: 24, name: 'Wireless Headphones', price: 89.99, category: 'Technology', image: 'assests/tech/image 86.png' }
         ];
 
-        // ===== SCROLL TO SECTION FUNCTION =====
+        // ===== SCROLL TO SECTION =====
         window.scrollToSection = function(sectionId) {
             const section = document.getElementById(sectionId);
             if (section) {
                 section.scrollIntoView({ behavior: 'smooth' });
             }
         };
+
+        // ===== SEARCH FUNCTIONALITY =====
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const searchResults = document.getElementById('searchResults');
+
+        function performSearch(query) {
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            const results = allProducts.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase()) ||
+                product.category.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            displaySearchResults(results);
+        }
+
+        function displaySearchResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No products found</div>';
+            } else {
+                searchResults.innerHTML = results.map(product => `
+                    <div class="search-result-item" onclick="location.href='product-details.html?id=${product.id}'">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/50x50'">
+                        <div class="search-result-info">
+                            <h4>${product.name}</h4>
+                            <p>$${product.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            searchResults.style.display = 'block';
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                performSearch(e.target.value);
+            });
+
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        }
 
         // ===== DISPLAY WISHLIST ITEMS =====
         function displayWishlist() {
@@ -558,7 +710,7 @@
             showNotification(`${product.name} added to cart!`);
         };
 
-        // ===== UPDATE CART COUNT =====
+        // ===== UPDATE COUNTS =====
         function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -573,7 +725,6 @@
             }
         }
 
-        // ===== UPDATE WISHLIST COUNT =====
         function updateWishlistCount() {
             const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
             const wishlistCount = document.getElementById('wishlistCount');
@@ -627,58 +778,6 @@
             }
         `;
         document.head.appendChild(style);
-
-        // ===== SEARCH FUNCTIONALITY (same as other pages) =====
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-        const searchResults = document.getElementById('searchResults');
-
-        function performSearch(query) {
-            if (query.length < 2) {
-                searchResults.style.display = 'none';
-                return;
-            }
-            
-            const results = allProducts.filter(product => 
-                product.name.toLowerCase().includes(query.toLowerCase()) ||
-                product.category.toLowerCase().includes(query.toLowerCase())
-            );
-            
-            displaySearchResults(results);
-        }
-
-        function displaySearchResults(results) {
-            if (results.length === 0) {
-                searchResults.innerHTML = '<div class="no-results">No products found</div>';
-            } else {
-                searchResults.innerHTML = results.map(product => `
-                    <div class="search-result-item" onclick="location.href='product-details.html?id=${product.id}'">
-                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/50x50'">
-                        <div class="search-result-info">
-                            <h4>${product.name}</h4>
-                            <p>$${product.price.toFixed(2)}</p>
-                        </div>
-                    </div>
-                `).join('');
-            }
-            searchResults.style.display = 'block';
-        }
-
-        if (searchInput) {
-            searchInput.addEventListener('input', function(e) {
-                performSearch(e.target.value);
-            });
-
-            searchButton.addEventListener('click', function() {
-                performSearch(searchInput.value);
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                    searchResults.style.display = 'none';
-                }
-            });
-        }
 
         // Initialize
         displayWishlist();

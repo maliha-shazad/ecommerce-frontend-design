@@ -49,6 +49,7 @@
             font-weight: 600;
             font-size: 14px;
             transition: color 0.3s;
+            cursor: pointer;
         }
         
         nav a:hover,
@@ -71,7 +72,7 @@
             position: relative;
         }
         
-        .cart-count {
+        .cart-count, .wishlist-count {
             background: #23A6F0;
             color: white;
             border-radius: 50%;
@@ -81,6 +82,100 @@
             top: -10px;
             right: -10px;
             display: none;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #E9E9E9;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #23A6F0;
+            box-shadow: 0 0 0 3px rgba(35,166,240,0.1);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #23A6F0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #E9E9E9;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+        
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #E9E9E9;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-result-item:hover {
+            background: #F5F5F5;
+        }
+        
+        .search-result-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .search-result-info h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .search-result-info p {
+            color: #23A6F0;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #737373;
         }
         
         /* Page Header */
@@ -195,6 +290,7 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         
         .product-card:hover {
@@ -220,17 +316,35 @@
             transform: scale(1.1);
         }
         
-        .product-badge {
+        .wishlist-icon {
             position: absolute;
             top: 10px;
-            left: 10px;
-            background: #23A6F0;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            font-size: 12px;
-            font-weight: 600;
-            z-index: 1;
+            right: 10px;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .wishlist-icon i {
+            color: #23A6F0;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .wishlist-icon.active i {
+            color: #FF4444;
+        }
+        
+        .wishlist-icon:hover {
+            transform: scale(1.1);
         }
         
         .product-info {
@@ -347,6 +461,7 @@
             color: #BDBDBD;
             text-decoration: none;
             transition: color 0.3s;
+            cursor: pointer;
         }
         
         .footer-section a:hover {
@@ -377,6 +492,12 @@
                 gap: 15px;
                 flex-wrap: wrap;
                 justify-content: center;
+            }
+            
+            .search-container {
+                width: 100%;
+                max-width: 100%;
+                margin: 10px 0;
             }
             
             .product-grid {
@@ -428,19 +549,28 @@
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="products.html" class="active">Products</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
             </ul>
         </nav>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search products..." autocomplete="off">
+            <button class="search-button" id="searchButton"><i class="fas fa-search"></i></button>
+            <div class="search-results" id="searchResults"></div>
+        </div>
         
         <div class="header-icons">
             <i class="far fa-user"></i>
-            <i class="fas fa-search"></i>
-            <a href="cart.html">
+            <a href="wishlist.html" style="position: relative;">
+                <i class="far fa-heart"></i>
+                <span class="wishlist-count" id="wishlistCount"></span>
+            </a>
+            <a href="cart.html" style="position: relative;">
                 <i class="fas fa-shopping-cart"></i>
                 <span class="cart-count" id="cartCount"></span>
             </a>
-            <i class="far fa-heart"></i>
         </div>
     </header>
 
@@ -487,7 +617,7 @@
             <div class="footer-section">
                 <h4>About</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
+                    <li><a onclick="scrollToSection('about')">About Us</a></li>
                     <li><a href="#">Find Store</a></li>
                     <li><a href="#">Categories</a></li>
                     <li><a href="#">Blogs</a></li>
@@ -499,7 +629,7 @@
                     <li><a href="#">Help Center</a></li>
                     <li><a href="#">Money Refund</a></li>
                     <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a onclick="scrollToSection('contact')">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -526,220 +656,108 @@
     </footer>
 
     <script>
-        // Complete Product Database with your descriptions
-        const products = [
-            // CLOTHING PRODUCTS
-            { 
-                id: 1, 
-                name: 'Brown Faux Fur Jacket', 
-                price: 89.99, 
-                category: 'cloth', 
-                image: 'assests/cloth/2 1.png',
-                description: 'Stylish brown faux fur jacket, soft and warm for winter fashion'
-            },
-            { 
-                id: 2, 
-                name: 'Slim-Fit Cargo Pants', 
-                price: 49.99, 
-                category: 'cloth', 
-                image: 'assests/cloth/Bitmap (2).png',
-                description: 'Trendy slim-fit cargo pants with multiple pockets, comfortable for casual wear'
-            },
-            { 
-                id: 3, 
-                name: 'Cotton T-Shirt', 
-                price: 24.99, 
-                category: 'cloth', 
-                image: 'assests/cloth/Bitmap.png',
-                description: 'Premium quality 100% cotton t-shirt, soft and breathable for everyday wear'
-            },
-            { 
-                id: 4, 
-                name: 'Real Leather Bifold Wallet', 
-                price: 39.99, 
-                category: 'cloth', 
-                image: 'assests/cloth/image 24.png',
-                description: 'Genuine leather bifold wallet with multiple card slots and sleek design'
-            },
-            { 
-                id: 5, 
-                name: 'Denim Crossbody Bag', 
-                price: 44.99, 
-                category: 'cloth', 
-                image: 'assests/cloth/image 26.png',
-                description: 'Fashionable denim crossbody bag, perfect for casual outings'
-            },
-            { 
-                id: 6, 
-                name: 'Classic Wool-Blend Overcoat', 
-                price: 149.99, 
-                category: 'cloth', 
-                image: 'assests/cloth/image 30.png',
-                description: 'Elegant wool-blend overcoat, warm and stylish for cold weather'
-            },
-            
-            // INTERIOR PRODUCTS
-            { 
-                id: 7, 
-                name: 'Comfortable Sofa Chair', 
-                price: 199.99, 
-                category: 'interior', 
-                image: 'assests/interior/1.png',
-                description: 'Plush comfortable sofa-style chair, perfect for relaxing'
-            },
-            { 
-                id: 8, 
-                name: 'Handmade Terracotta Pot', 
-                price: 34.99, 
-                category: 'interior', 
-                image: 'assests/interior/3.png',
-                description: 'Real handmade terracotta pot with natural brown finish, perfect for plants'
-            },
-            { 
-                id: 9, 
-                name: 'Modern Lamp', 
-                price: 59.99, 
-                category: 'interior', 
-                image: 'assests/interior/6.png',
-                description: 'Stylish modern lamp for ambient lighting'
-            },
-            { 
-                id: 10, 
-                name: 'Portable Adjustable Chair', 
-                price: 79.99, 
-                category: 'interior', 
-                image: 'assests/interior/7.png',
-                description: 'Adjustable chair that can be carried anywhere, perfect for flexible seating'
-            },
-            { 
-                id: 11, 
-                name: 'Kitchen Mixer', 
-                price: 129.99, 
-                category: 'interior', 
-                image: 'assests/interior/8.png',
-                description: 'Electric kitchen mixer for baking and cooking'
-            },
-            { 
-                id: 12, 
-                name: 'Electric Juicer', 
-                price: 69.99, 
-                category: 'interior', 
-                image: 'assests/interior/9.png',
-                description: 'Electric juicer for fresh juices at home'
-            },
-            { 
-                id: 13, 
-                name: 'Decorative Plant', 
-                price: 29.99, 
-                category: 'interior', 
-                image: 'assests/interior/image 89.png',
-                description: 'Beautiful decorative plant for home or office'
-            },
-            { 
-                id: 14, 
-                name: 'Terracotta Pot', 
-                price: 34.99, 
-                category: 'interior', 
-                image: 'assests/interior/image 90.png',
-                description: 'Handmade terracotta pot with natural brown finish'
-            },
-            { 
-                id: 15, 
-                name: 'Comfortable Mattress', 
-                price: 299.99, 
-                category: 'interior', 
-                image: 'assests/interior/image 93.png',
-                description: 'Comfortable mattress for quality sleep'
-            },
-            
-            // TECH PRODUCTS
-            { 
-                id: 16, 
-                name: 'Digital Camera', 
-                price: 249.99, 
-                category: 'tech', 
-                image: 'assests/tech/6.png',
-                description: 'High-resolution digital camera with advanced features for photography enthusiasts'
-            },
-            { 
-                id: 17, 
-                name: 'Smart Watch', 
-                price: 179.99, 
-                category: 'tech', 
-                image: 'assests/tech/8.png',
-                description: 'Modern smartwatch with fitness tracking, notifications, and sleek design'
-            },
-            { 
-                id: 18, 
-                name: 'iPhone', 
-                price: 999.99, 
-                category: 'tech', 
-                image: 'assests/tech/image 23.png',
-                description: 'Latest model iPhone with advanced camera and powerful performance'
-            },
-            { 
-                id: 19, 
-                name: 'Premium Headphones', 
-                price: 149.99, 
-                category: 'tech', 
-                image: 'assests/tech/image 29.png',
-                description: 'High-quality headphones with superior sound and comfortable design'
-            },
-            { 
-                id: 20, 
-                name: 'Tablet', 
-                price: 399.99, 
-                category: 'tech', 
-                image: 'assests/tech/image 32.png',
-                description: 'Portable tablet perfect for work and entertainment, with sharp display'
-            },
-            { 
-                id: 21, 
-                name: 'iPhone', 
-                price: 899.99, 
-                category: 'tech', 
-                image: 'assests/tech/image 33.png',
-                description: 'iPhone with great features and sleek design'
-            },
-            { 
-                id: 22, 
-                name: 'Laptop', 
-                price: 899.99, 
-                category: 'tech', 
-                image: 'assests/tech/image 34.png',
-                description: 'Powerful laptop for work and play, with fast performance'
-            },
-            { 
-                id: 23, 
-                name: 'Thormus Device', 
-                price: 199.99, 
-                category: 'tech', 
-                image: 'assests/tech/image 85.png',
-                description: 'Specialized Thormus device for professional use'
-            },
-            { 
-                id: 24, 
-                name: 'Wireless Headphones', 
-                price: 89.99, 
-                category: 'tech', 
-                image: 'assests/tech/image 86.png',
-                description: 'Bluetooth wireless headphones with long battery life'
-            }
+        // Complete Product Database
+        const allProducts = [
+            // Clothing
+            { id: 1, name: 'Brown Faux Fur Jacket', price: 89.99, category: 'cloth', categoryName: 'Clothing', image: 'assests/cloth/2 1.png', description: 'Stylish brown faux fur jacket, soft and warm for winter fashion' },
+            { id: 2, name: 'Slim-Fit Cargo Pants', price: 49.99, category: 'cloth', categoryName: 'Clothing', image: 'assests/cloth/Bitmap (2).png', description: 'Trendy slim-fit cargo pants with multiple pockets' },
+            { id: 3, name: 'Cotton T-Shirt', price: 24.99, category: 'cloth', categoryName: 'Clothing', image: 'assests/cloth/Bitmap.png', description: 'Premium quality 100% cotton t-shirt' },
+            { id: 4, name: 'Real Leather Bifold Wallet', price: 39.99, category: 'cloth', categoryName: 'Clothing', image: 'assests/cloth/image 24.png', description: 'Genuine leather bifold wallet with multiple card slots' },
+            { id: 5, name: 'Denim Crossbody Bag', price: 44.99, category: 'cloth', categoryName: 'Clothing', image: 'assests/cloth/image 26.png', description: 'Fashionable denim crossbody bag' },
+            { id: 6, name: 'Classic Wool-Blend Overcoat', price: 149.99, category: 'cloth', categoryName: 'Clothing', image: 'assests/cloth/image 30.png', description: 'Elegant wool-blend overcoat' },
+            // Interior
+            { id: 7, name: 'Comfortable Sofa Chair', price: 199.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/1.png', description: 'Plush comfortable sofa-style chair' },
+            { id: 8, name: 'Handmade Terracotta Pot', price: 34.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/3.png', description: 'Real handmade terracotta pot' },
+            { id: 9, name: 'Modern Lamp', price: 59.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/6.png', description: 'Stylish modern lamp' },
+            { id: 10, name: 'Portable Adjustable Chair', price: 79.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/7.png', description: 'Adjustable chair that can be carried anywhere' },
+            { id: 11, name: 'Kitchen Mixer', price: 129.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/8.png', description: 'Electric kitchen mixer' },
+            { id: 12, name: 'Electric Juicer', price: 69.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/9.png', description: 'Electric juicer for fresh juices' },
+            { id: 13, name: 'Decorative Plant', price: 29.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/image 89.png', description: 'Beautiful decorative plant' },
+            { id: 14, name: 'Terracotta Pot', price: 34.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/image 90.png', description: 'Handmade terracotta pot' },
+            { id: 15, name: 'Comfortable Mattress', price: 299.99, category: 'interior', categoryName: 'Interior', image: 'assests/interior/image 93.png', description: 'Comfortable mattress for quality sleep' },
+            // Tech
+            { id: 16, name: 'Digital Camera', price: 249.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/6.png', description: 'High-resolution digital camera' },
+            { id: 17, name: 'Smart Watch', price: 179.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/8.png', description: 'Modern smartwatch with fitness tracking' },
+            { id: 18, name: 'iPhone', price: 999.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/image 23.png', description: 'Latest model iPhone' },
+            { id: 19, name: 'Premium Headphones', price: 149.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/image 29.png', description: 'High-quality headphones' },
+            { id: 20, name: 'Tablet', price: 399.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/image 32.png', description: 'Portable tablet' },
+            { id: 21, name: 'iPhone', price: 899.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/image 33.png', description: 'iPhone with great features' },
+            { id: 22, name: 'Laptop', price: 899.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/image 34.png', description: 'Powerful laptop' },
+            { id: 23, name: 'Thormus Device', price: 199.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/image 85.png', description: 'Specialized Thormus device' },
+            { id: 24, name: 'Wireless Headphones', price: 89.99, category: 'tech', categoryName: 'Technology', image: 'assests/tech/image 86.png', description: 'Bluetooth wireless headphones' }
         ];
 
+        // ===== SCROLL TO SECTION =====
+        window.scrollToSection = function(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        // ===== SEARCH FUNCTIONALITY =====
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const searchResults = document.getElementById('searchResults');
+
+        function performSearch(query) {
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            const results = allProducts.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase()) ||
+                product.categoryName.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            displaySearchResults(results);
+        }
+
+        function displaySearchResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No products found</div>';
+            } else {
+                searchResults.innerHTML = results.map(product => `
+                    <div class="search-result-item" onclick="location.href='product-details.html?id=${product.id}'">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/50x50'">
+                        <div class="search-result-info">
+                            <h4>${product.name}</h4>
+                            <p>$${product.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            searchResults.style.display = 'block';
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                performSearch(e.target.value);
+            });
+
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        }
+
+        // ===== PRODUCT DISPLAY =====
         let currentCategory = 'all';
         let currentSort = 'default';
 
-        // Display products function
         function displayProducts() {
-            let filteredProducts = [...products];
+            let filteredProducts = [...allProducts];
             
-            // Filter by category
             if (currentCategory !== 'all') {
                 filteredProducts = filteredProducts.filter(p => p.category === currentCategory);
             }
             
-            // Sort products
             if (currentSort === 'price-low') {
                 filteredProducts.sort((a, b) => a.price - b.price);
             } else if (currentSort === 'price-high') {
@@ -748,72 +766,81 @@
                 filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
             }
             
-            // Update results count
             document.getElementById('resultsCount').textContent = `Showing ${filteredProducts.length} products`;
             
-            // Generate product grid
             const grid = document.getElementById('productGrid');
-            grid.innerHTML = filteredProducts.map(product => `
-                <div class="product-card" onclick="viewProduct(${product.id})">
-                    <div class="product-image">
-                        <img src="${product.image}" alt="${product.name}" 
-                             onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+            grid.innerHTML = filteredProducts.map(product => {
+                const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+                const isInWishlist = wishlist.includes(product.id);
+                
+                return `
+                    <div class="product-card" onclick="viewProduct(${product.id})">
+                        <div class="product-image">
+                            <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/300x300?text=Product'">
+                            <div class="wishlist-icon ${isInWishlist ? 'active' : ''}" onclick="event.stopPropagation(); toggleWishlist(${product.id}, this)">
+                                <i class="${isInWishlist ? 'fas' : 'far'} fa-heart"></i>
+                            </div>
+                        </div>
+                        <div class="product-info">
+                            <span class="product-category">${product.categoryName}</span>
+                            <h3>${product.name}</h3>
+                            <p class="product-description">${product.description}</p>
+                            <p class="product-price">$${product.price.toFixed(2)}</p>
+                            <button class="btn-add" onclick="event.stopPropagation(); addToCart(${product.id})">Add to Cart</button>
+                        </div>
                     </div>
-                    <div class="product-info">
-                        <span class="product-category">${getCategoryName(product.category)}</span>
-                        <h3>${product.name}</h3>
-                        <p class="product-description">${product.description}</p>
-                        <p class="product-price">$${product.price.toFixed(2)}</p>
-                        <button class="btn-add" onclick="event.stopPropagation(); addToCart(${product.id})">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            `).join('');
+                `;
+            }).join('');
         }
 
-        // Helper function to get category display name
-        function getCategoryName(category) {
-            const categories = {
-                'cloth': 'Clothing',
-                'interior': 'Interior',
-                'tech': 'Technology'
-            };
-            return categories[category] || category;
-        }
-
-        // Filter by category
         window.filterCategory = function(category) {
             currentCategory = category;
-            
-            // Update active tab
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             event.target.classList.add('active');
-            
             displayProducts();
         };
 
-        // Sort products
         window.sortProducts = function() {
             currentSort = document.getElementById('sortFilter').value;
             displayProducts();
         };
 
-        // View product details
         window.viewProduct = function(productId) {
             location.href = `product-details.html?id=${productId}`;
         };
 
-        // Add to cart
-        window.addToCart = function(productId) {
-            const product = products.find(p => p.id === productId);
+        // ===== WISHLIST FUNCTIONS =====
+        window.toggleWishlist = function(productId, element) {
+            event.stopPropagation();
             
-            // Get existing cart from localStorage
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const icon = element.querySelector('i');
+            
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                element.classList.remove('active');
+                showNotification('Removed from wishlist');
+            } else {
+                wishlist.push(productId);
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                element.classList.add('active');
+                showNotification('Added to wishlist');
+            }
+            
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            updateWishlistCount();
+        };
+
+        // ===== CART FUNCTIONS =====
+        window.addToCart = function(productId) {
+            const product = allProducts.find(p => p.id === productId);
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             
-            // Check if product already in cart
             const existingItem = cart.find(item => item.id === productId);
             
             if (existingItem) {
@@ -828,24 +855,12 @@
                 });
             }
             
-            // Save to localStorage
             localStorage.setItem('cart', JSON.stringify(cart));
-            
-            // Show notification
-            alert(`${product.name} added to cart!`);
-            
-            // Animate cart icon
-            const cartIcon = document.querySelector('.fa-shopping-cart');
-            cartIcon.style.transform = 'scale(1.2)';
-            setTimeout(() => {
-                cartIcon.style.transform = 'scale(1)';
-            }, 200);
-            
-            // Update cart count
             updateCartCount();
+            showNotification(`${product.name} added to cart!`);
         };
 
-        // Update cart count
+        // ===== UPDATE COUNTS =====
         function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -860,9 +875,64 @@
             }
         }
 
+        function updateWishlistCount() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const wishlistCount = document.getElementById('wishlistCount');
+            if (wishlistCount) {
+                if (wishlist.length > 0) {
+                    wishlistCount.textContent = wishlist.length;
+                    wishlistCount.style.display = 'inline';
+                } else {
+                    wishlistCount.style.display = 'none';
+                }
+            }
+        }
+
+        // ===== NOTIFICATION =====
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #23A6F0;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 9999;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2000);
+        }
+
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
         // Initialize
         displayProducts();
         updateCartCount();
+        updateWishlistCount();
     </script>
 </body>
 </html>
