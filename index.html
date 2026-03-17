@@ -3,212 +3,620 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecom Store - B2B Marketplace</title>
+    <title>Ecommerce Store</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #252B42;
+        }
+        
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .logo img {
+            height: 40px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #737373;
+            font-weight: 600;
+        }
+        
+        nav a.active {
+            color: #252B42;
+        }
+        
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            color: #23A6F0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 600px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 40px;
+            color: white;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+        }
+        
+        .hero-tagline {
+            font-size: 16px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .hero h1 {
+            font-size: 58px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #23A6F0;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+        }
+        
+        /* Brands Section */
+        .brands {
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .brand-grid {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .brand-grid img {
+            height: 60px;
+            width: auto;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        
+        .brand-grid img:hover {
+            opacity: 1;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 60px 40px;
+            background: #FAFAFA;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .service-card h3 {
+            padding: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 60px 40px;
+        }
+        
+        .category-title {
+            font-size: 24px;
+            margin: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .product-price {
+            color: #23A6F0;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .btn-small {
+            background: #23A6F0;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+        }
+        
+        /* Flags Section */
+        .flags-section {
+            padding: 60px 40px;
+            background: #FAFAFA;
+            text-align: center;
+        }
+        
+        .flag-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .flag-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .flag-item img {
+            width: 60px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .flag-item span {
+            font-weight: 600;
+            color: #737373;
+        }
+        
+        /* Footer */
+        footer {
+            background: #252B42;
+            color: white;
+            padding: 60px 40px 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 20px;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-section a {
+            color: #BDBDBD;
+            text-decoration: none;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #374151;
+            color: #BDBDBD;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-grid,
+            .product-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .service-grid,
+            .product-grid,
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .service-grid,
+            .product-grid,
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
 
     <header>
-        <div class="logo" onclick="navigateTo('index.html')" style="cursor: pointer;">
-            <img src="images/logo.png" alt="Ecom Store" style="height: 40px;">
+        <div class="logo">
+            <img src="assests/logo/logo-colored.png" alt="Bandage">
         </div>
         
         <nav>
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="find-store.html">Find Store</a></li>
-                <li><a href="categories.html">Categories</a></li>
-                <li><a href="blogs.html">Blogs</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
             </ul>
         </nav>
         
-        <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search suppliers..." autocomplete="off">
-            <button type="submit" id="searchButton"><i class="fas fa-search"></i></button>
-            <div class="search-results" id="searchResults"></div>
-        </div>
-        
-        <div class="user-actions">
-            <a href="login.html" class="user-icon"><i class="fas fa-user"></i></a>
-            <a href="register.html" class="user-icon"><i class="fas fa-user-plus"></i></a>
-            <div class="cart-icon" onclick="navigateTo('cart.html')">
-                <i class="fas fa-shopping-cart"></i>
-                <span class="cart-count">0</span>
-            </div>
+        <div class="header-icons">
+            <i class="far fa-user"></i>
+            <i class="fas fa-search"></i>
+            <i class="fas fa-shopping-cart"></i>
+            <i class="far fa-heart"></i>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Latest Trending</h1>
-                <h2 class="sub-headline">Electronics Items</h2>
-                <p class="description">An easy way to send requests to all suppliers</p>
-                <p class="description">Do try us to get amazing discounts and special offers</p>
-                <div class="hero-buttons">
-                    <a href="categories.html" class="btn btn-primary">Browse Categories</a>
-                    <a href="register.html" class="btn btn-secondary">Join as Supplier</a>
-                </div>
-            </div>
-        </section>
+    <!-- Hero Section with Background Image -->
+    <section class="hero" style="background-image: url('assests/background/Group 969.png');">
+        <div class="hero-content">
+            <p class="hero-tagline">SUMMER 2020</p>
+            <h1>NEW COLLECTION</h1>
+            <p>We know how large objects will act, but things on a small scale.</p>
+            <a href="#" class="btn">SHOP NOW</a>
+        </div>
+    </section>
 
-        <!-- Service Section -->
-        <section class="service-section">
-            <h2 class="section-title">Service Section</h2>
-            <div class="service-grid">
-                <div class="service-card">
-                    <i class="fas fa-industry"></i>
-                    <h3>Source from Industry Hubs</h3>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-cog"></i>
-                    <h3>Customize Your Products</h3>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-ship"></i>
-                    <h3>Fast, reliable shipping by ocean or air</h3>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-clipboard-check"></i>
-                    <h3>Product monitoring and inspection</h3>
-                </div>
-            </div>
-        </section>
+    <!-- Brands Section (using logo folder) -->
+    <section class="brands">
+        <h2 class="section-title">Our Brands</h2>
+        <div class="brand-grid">
+            <img src="assests/logo/logo-colored.png" alt="Brand">
+            <img src="assests/logo/logo-colored.png" alt="Brand">
+            <img src="assests/logo/logo-colored.png" alt="Brand">
+            <img src="assests/logo/logo-colored.png" alt="Brand">
+        </div>
+    </section>
 
-        <!-- Suppliers by Region -->
-        <section class="suppliers-section">
-            <h2 class="section-title">Suppliers by region</h2>
-            <div class="suppliers-grid">
-                <!-- UAE -->
-                <div class="supplier-card">
-                    <h3>🇦🇪 UAE</h3>
-                    <p class="country">Dubai</p>
-                    <p class="supplier-name">koko.com</p>
-                    <a href="#" class="btn-small">Contact</a>
-                </div>
-                
-                <!-- China -->
-                <div class="supplier-card">
-                    <h3>🇨🇳 China</h3>
-                    <p class="country">Shanghai</p>
-                    <p class="supplier-name">bananay.com</p>
-                    <a href="#" class="btn-small">Contact</a>
-                </div>
-                
-                <!-- Dubai -->
-                <div class="supplier-card">
-                    <h3>🇦🇪 Dubai</h3>
-                    <p class="country">UAE</p>
-                    <p class="supplier-name">emrsaj.com</p>
-                    <a href="#" class="btn-small">Contact</a>
-                </div>
-                
-                <!-- Denmark -->
-                <div class="supplier-card">
-                    <h3>🇩🇰 Denmark</h3>
-                    <p class="country">Copenhagen</p>
-                    <p class="supplier-name">snowball.com</p>
-                    <a href="#" class="btn-small">Contact</a>
-                </div>
-                
-                <!-- France -->
-                <div class="supplier-card">
-                    <h3>🇫🇷 France</h3>
-                    <p class="country">Paris</p>
-                    <p class="supplier-name">shugaf.com</p>
-                    <a href="#" class="btn-small">Contact</a>
-                </div>
-                
-                <!-- Greenland -->
-                <div class="supplier-card">
-                    <h3>🇬🇱 Greenland</h3>
-                    <p class="country">Nuuk</p>
-                    <p class="supplier-name">livelife.com</p>
-                    <a href="#" class="btn-small">Contact</a>
-                </div>
-                
-                <!-- Italy -->
-                <div class="supplier-card">
-                    <h3>🇮🇹 Italy</h3>
-                    <p class="country">Milan</p>
-                    <p class="supplier-name">happycoc.com</p>
-                    <a href="#" class="btn-small">Contact</a>
-                </div>
-                
-                <!-- Russia -->
-                <div class="supplier-card">
-                    <h3>🇷🇺 Russia</h3>
-                    <p class="country">Moscow</p>
-                    <p class="supplier-name">oidbh.com</p>
-                    <a href="#" class="btn-small">Contact</a>
-                </div>
+    <!-- Services Section -->
+    <section class="services">
+        <h2 class="section-title">Service Section</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <img src="assests/services/image 98.png" alt="Service">
+                <h3>Source from Industry Hubs</h3>
             </div>
-        </section>
+            <div class="service-card">
+                <img src="assests/services/image 106.png" alt="Service">
+                <h3>Customize Your Products</h3>
+            </div>
+            <div class="service-card">
+                <img src="assests/services/image 107.png" alt="Service">
+                <h3>Fast, reliable shipping by ocean or air</h3>
+            </div>
+            <div class="service-card">
+                <img src="assests/services/Mask group.png" alt="Service">
+                <h3>Product monitoring and inspection</h3>
+            </div>
+        </div>
+    </section>
 
-        <!-- Newsletter Section -->
-        <section class="newsletter-section">
-            <div class="container">
-                <h2>Subscribe to our newsletter</h2>
-                <p>Get daily news on upcoming offers from many suppliers all over the world</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email address" required>
-                    <button type="submit">Subscribe</button>
-                </form>
+    <!-- Cloth Products Section -->
+    <section class="products-section">
+        <h2 class="section-title">Fashion Collection</h2>
+        <div class="product-grid">
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/cloth/2 1.png" alt="Fashion Product">
+                <div class="product-info">
+                    <h3>Casual Shirt</h3>
+                    <p class="product-price">$29.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
             </div>
-        </section>
-    </main>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/cloth/Bitmap.png" alt="Fashion Product">
+                <div class="product-info">
+                    <h3>Summer Dress</h3>
+                    <p class="product-price">$49.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/cloth/Bitmap (2).png" alt="Fashion Product">
+                <div class="product-info">
+                    <h3>Stylish Outfit</h3>
+                    <p class="product-price">$39.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/cloth/image 24.png" alt="Fashion Product">
+                <div class="product-info">
+                    <h3>Fashion Item</h3>
+                    <p class="product-price">$34.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interior Products Section -->
+    <section class="products-section">
+        <h2 class="section-title">Interior Collection</h2>
+        <div class="product-grid">
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/interior/3.png" alt="Interior">
+                <div class="product-info">
+                    <h3>Modern Chair</h3>
+                    <p class="product-price">$149.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/interior/6.png" alt="Interior">
+                <div class="product-info">
+                    <h3>Table Lamp</h3>
+                    <p class="product-price">$79.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/interior/7.png" alt="Interior">
+                <div class="product-info">
+                    <h3>Wall Decor</h3>
+                    <p class="product-price">$89.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/interior/8.png" alt="Interior">
+                <div class="product-info">
+                    <h3>Vase Set</h3>
+                    <p class="product-price">$59.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Products Section -->
+    <section class="products-section">
+        <h2 class="section-title">Tech Collection</h2>
+        <div class="product-grid">
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/tech/image 23.png" alt="Tech">
+                <div class="product-info">
+                    <h3>Wireless Headphones</h3>
+                    <p class="product-price">$99.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/tech/image 29.png" alt="Tech">
+                <div class="product-info">
+                    <h3>Smart Watch</h3>
+                    <p class="product-price">$199.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/tech/image 32.png" alt="Tech">
+                <div class="product-info">
+                    <h3>Bluetooth Speaker</h3>
+                    <p class="product-price">$79.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html'">
+                <img src="assests/tech/image 33.png" alt="Tech">
+                <div class="product-info">
+                    <h3>Power Bank</h3>
+                    <p class="product-price">$49.99</p>
+                    <button class="btn-small">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flags Section -->
+    <section class="flags-section">
+        <h2 class="section-title">We Ship Worldwide</h2>
+        <div class="flag-grid">
+            <div class="flag-item">
+                <img src="assests/flags/US@2x.png" alt="USA">
+                <span>USA</span>
+            </div>
+            <div class="flag-item">
+                <img src="assests/flags/GB@2x.png" alt="UK">
+                <span>UK</span>
+            </div>
+            <div class="flag-item">
+                <img src="assests/flags/AE@2x.png" alt="UAE">
+                <span>UAE</span>
+            </div>
+            <div class="flag-item">
+                <img src="assests/flags/FR@2x.png" alt="France">
+                <span>France</span>
+            </div>
+            <div class="flag-item">
+                <img src="assests/flags/DE@2x.png" alt="Germany">
+                <span>Germany</span>
+            </div>
+            <div class="flag-item">
+                <img src="assests/flags/IT@2x.png" alt="Italy">
+                <span>Italy</span>
+            </div>
+            <div class="flag-item">
+                <img src="assests/flags/RU@2x.png" alt="Russia">
+                <span>Russia</span>
+            </div>
+            <div class="flag-item">
+                <img src="assests/flags/DK@2x.png" alt="Denmark">
+                <span>Denmark</span>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <div class="footer-content">
-            <!-- About Column -->
             <div class="footer-section">
-                <h3>About</h3>
+                <h4>About</h4>
                 <ul>
-                    <li><a href="about.html">About us</a></li>
-                    <li><a href="find-store.html">Find Store</a></li>
-                    <li><a href="categories.html">Categories</a></li>
-                    <li><a href="blogs.html">Blogs</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Find Store</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Blogs</a></li>
                 </ul>
             </div>
-            
-            <!-- Information Column -->
             <div class="footer-section">
                 <h4>Information</h4>
                 <ul>
-                    <li><a href="help-center.html">help center</a></li>
-                    <li><a href="money-refund.html">Money refund</a></li>
-                    <li><a href="shipping.html">Shipping</a></li>
-                    <li><a href="contact.html">Contact us</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Money Refund</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
-            
-            <!-- For Users Column -->
             <div class="footer-section">
-                <h4>For users</h4>
+                <h4>For Users</h4>
                 <ul>
-                    <li><a href="login.html">Login</a></li>
-                    <li><a href="register.html">Register</a></li>
-                    <li><a href="settings.html">Setting</a></li>
-                    <li><a href="orders.html">My orders</a></li>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Register</a></li>
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">My Orders</a></li>
                 </ul>
             </div>
-            
-            <!-- Contact Column -->
             <div class="footer-section">
                 <h4>Contact</h4>
                 <ul>
-                    <li><i class="fas fa-envelope"></i> support@ecomstore.com</li>
-                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
-                    <li><i class="fas fa-map-marker"></i> 123 Business Ave</li>
+                    <li>📧 support@store.com</li>
+                    <li>📞 +1 234 567 890</li>
+                    <li>📍 123 Business St</li>
                 </ul>
             </div>
         </div>
-        
         <div class="footer-bottom">
-            <p>&copy; 2026 Ecom Store. All rights reserved.</p>
+            <p>© 2026 Ecommerce Store. All rights reserved.</p>
         </div>
     </footer>
 
