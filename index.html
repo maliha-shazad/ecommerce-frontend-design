@@ -49,6 +49,7 @@
             font-weight: 600;
             font-size: 14px;
             transition: color 0.3s;
+            cursor: pointer;
         }
         
         nav a:hover,
@@ -71,7 +72,7 @@
             position: relative;
         }
         
-        .cart-count {
+        .cart-count, .wishlist-count {
             background: #23A6F0;
             color: white;
             border-radius: 50%;
@@ -81,6 +82,100 @@
             top: -10px;
             right: -10px;
             display: none;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            position: relative;
+            flex: 1;
+            max-width: 400px;
+            margin: 0 20px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #E9E9E9;
+            border-radius: 25px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #23A6F0;
+            box-shadow: 0 0 0 3px rgba(35,166,240,0.1);
+        }
+        
+        .search-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #23A6F0;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #E9E9E9;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            max-height: 400px;
+            overflow-y: auto;
+            display: none;
+            z-index: 1000;
+            margin-top: 5px;
+        }
+        
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px;
+            border-bottom: 1px solid #E9E9E9;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .search-result-item:hover {
+            background: #F5F5F5;
+        }
+        
+        .search-result-item img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .search-result-info h4 {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .search-result-info p {
+            color: #23A6F0;
+            font-weight: 600;
+            font-size: 13px;
+        }
+        
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #737373;
         }
         
         /* Hero Section */
@@ -228,6 +323,7 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             transition: all 0.3s;
             cursor: pointer;
+            position: relative;
         }
         
         .product-card:hover {
@@ -239,6 +335,7 @@
             height: 250px;
             overflow: hidden;
             background: #f5f5f5;
+            position: relative;
         }
         
         .product-image img {
@@ -249,6 +346,38 @@
         }
         
         .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .wishlist-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            pointer-events: auto;
+        }
+        
+        .wishlist-icon i {
+            color: #23A6F0;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .wishlist-icon.active i {
+            color: #FF4444;
+        }
+        
+        .wishlist-icon:hover {
             transform: scale(1.1);
         }
         
@@ -265,6 +394,58 @@
             color: #23A6F0;
             font-size: 18px;
             font-weight: 700;
+        }
+        
+        /* About Section */
+        .about-section {
+            padding: 80px 40px;
+            background: white;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        
+        .about-text h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #252B42;
+        }
+        
+        .about-text p {
+            color: #737373;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .stat-item h3 {
+            font-size: 40px;
+            color: #23A6F0;
+            margin-bottom: 5px;
+        }
+        
+        .stat-item p {
+            color: #737373;
+            font-size: 14px;
         }
         
         /* Flags Section */
@@ -303,12 +484,119 @@
             color: #737373;
         }
         
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 40px;
+            background: #FAFAFA;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info p {
+            color: #737373;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: #23A6F0;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        .contact-item h4 {
+            margin-bottom: 5px;
+            color: #252B42;
+        }
+        
+        .contact-item p {
+            margin: 0;
+            color: #737373;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #E9E9E9;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #23A6F0;
+            box-shadow: 0 0 0 3px rgba(35,166,240,0.1);
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: #23A6F0;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #1a7dc0;
+        }
+        
         /* Footer */
         footer {
             background: #252B42;
             color: white;
             padding: 60px 40px 20px;
-            margin-top: 60px;
         }
         
         .footer-content {
@@ -335,6 +623,7 @@
             color: #BDBDBD;
             text-decoration: none;
             transition: color 0.3s;
+            cursor: pointer;
         }
         
         .footer-section a:hover {
@@ -351,8 +640,14 @@
         /* Responsive */
         @media (max-width: 1024px) {
             .service-grid,
-            .product-grid {
+            .product-grid,
+            .stats-grid {
                 grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -368,12 +663,19 @@
                 justify-content: center;
             }
             
+            .search-container {
+                width: 100%;
+                max-width: 100%;
+                margin: 10px 0;
+            }
+            
             .hero h1 {
                 font-size: 36px;
             }
             
             .service-grid,
             .product-grid,
+            .stats-grid,
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -382,6 +684,7 @@
         @media (max-width: 480px) {
             .service-grid,
             .product-grid,
+            .stats-grid,
             .footer-content {
                 grid-template-columns: 1fr;
             }
@@ -403,19 +706,28 @@
             <ul>
                 <li><a href="index.html" class="active">Home</a></li>
                 <li><a href="products.html">Products</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a onclick="scrollToSection('about')">About</a></li>
+                <li><a onclick="scrollToSection('contact')">Contact</a></li>
             </ul>
         </nav>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <input type="text" class="search-input" id="searchInput" placeholder="Search products..." autocomplete="off">
+            <button class="search-button" id="searchButton"><i class="fas fa-search"></i></button>
+            <div class="search-results" id="searchResults"></div>
+        </div>
         
         <div class="header-icons">
             <i class="far fa-user"></i>
-            <i class="fas fa-search"></i>
-            <a href="cart.html">
+            <a href="wishlist.html" style="position: relative;">
+                <i class="far fa-heart"></i>
+                <span class="wishlist-count" id="wishlistCount"></span>
+            </a>
+            <a href="cart.html" style="position: relative;">
                 <i class="fas fa-shopping-cart"></i>
                 <span class="cart-count" id="cartCount"></span>
             </a>
-            <i class="far fa-heart"></i>
         </div>
     </header>
 
@@ -462,6 +774,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=1'">
                 <div class="product-image">
                     <img src="assests/cloth/2 1.png" alt="Brown Faux Fur Jacket">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(1, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Brown Faux Fur Jacket</h3>
@@ -471,6 +786,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=2'">
                 <div class="product-image">
                     <img src="assests/cloth/Bitmap (2).png" alt="Slim-Fit Cargo Pants">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(2, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Slim-Fit Cargo Pants</h3>
@@ -480,6 +798,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=3'">
                 <div class="product-image">
                     <img src="assests/cloth/Bitmap.png" alt="Cotton T-Shirt">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(3, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Cotton T-Shirt</h3>
@@ -489,6 +810,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=6'">
                 <div class="product-image">
                     <img src="assests/cloth/image 30.png" alt="Wool-Blend Overcoat">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(6, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Wool-Blend Overcoat</h3>
@@ -508,6 +832,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=7'">
                 <div class="product-image">
                     <img src="assests/interior/1.png" alt="Sofa Chair">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(7, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Comfortable Sofa Chair</h3>
@@ -517,6 +844,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=8'">
                 <div class="product-image">
                     <img src="assests/interior/3.png" alt="Terracotta Pot">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(8, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Handmade Terracotta Pot</h3>
@@ -526,6 +856,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=10'">
                 <div class="product-image">
                     <img src="assests/interior/7.png" alt="Adjustable Chair">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(10, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Portable Adjustable Chair</h3>
@@ -535,6 +868,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=13'">
                 <div class="product-image">
                     <img src="assests/interior/image 89.png" alt="Plant">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(13, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Decorative Plant</h3>
@@ -554,6 +890,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=16'">
                 <div class="product-image">
                     <img src="assests/tech/6.png" alt="Camera">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(16, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Digital Camera</h3>
@@ -563,6 +902,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=18'">
                 <div class="product-image">
                     <img src="assests/tech/image 23.png" alt="iPhone">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(18, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>iPhone</h3>
@@ -572,6 +914,9 @@
             <div class="product-card" onclick="location.href='product-details.html?id=19'">
                 <div class="product-image">
                     <img src="assests/tech/image 29.png" alt="Headphones">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(19, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Premium Headphones</h3>
@@ -581,11 +926,44 @@
             <div class="product-card" onclick="location.href='product-details.html?id=22'">
                 <div class="product-image">
                     <img src="assests/tech/image 34.png" alt="Laptop">
+                    <div class="wishlist-icon" onclick="event.stopPropagation(); toggleWishlist(22, this)">
+                        <i class="far fa-heart"></i>
+                    </div>
                 </div>
                 <div class="product-info">
                     <h3>Laptop</h3>
                     <p class="product-price">$899.99</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-content">
+            <div class="about-text">
+                <h2>About Us</h2>
+                <p>Welcome to Ecommerce Store, your number one source for quality products. We're dedicated to providing you the very best of fashion, interior design, and technology, with an emphasis on quality, customer service, and uniqueness.</p>
+                <p>Founded in 2026, Ecommerce Store has come a long way from its beginnings. When we first started out, our passion for providing the best products drove us to start our own business.</p>
+                <p>We now serve customers all over the world and are thrilled to be a part of the eco-friendly wing of the e-commerce industry.</p>
+            </div>
+            <div class="about-image">
+                <img src="assests/background/Group 969.png" alt="About Us">
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>15+</h3>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h3>50k+</h3>
+                <p>Happy Customers</p>
+            </div>
+            <div class="stat-item">
+                <h3>100+</h3>
+                <p>Products</p>
             </div>
         </div>
     </section>
@@ -629,12 +1007,74 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+                
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Visit Us</h4>
+                            <p>123 Business Street, New York, NY 10001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p>+1 (555) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>support@ecommercestore.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <form id="contactForm" onsubmit="handleContactSubmit(event)">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
                 <h4>About</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
+                    <li><a onclick="scrollToSection('about')">About Us</a></li>
                     <li><a href="#">Find Store</a></li>
                     <li><a href="#">Categories</a></li>
                     <li><a href="#">Blogs</a></li>
@@ -646,7 +1086,7 @@
                     <li><a href="#">Help Center</a></li>
                     <li><a href="#">Money Refund</a></li>
                     <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a onclick="scrollToSection('contact')">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -673,7 +1113,149 @@
     </footer>
 
     <script>
-        // Update cart count
+        // Product Database (simplified for search)
+        const allProducts = [
+            // Clothing
+            { id: 1, name: 'Brown Faux Fur Jacket', price: 89.99, category: 'Clothing', image: 'assests/cloth/2 1.png' },
+            { id: 2, name: 'Slim-Fit Cargo Pants', price: 49.99, category: 'Clothing', image: 'assests/cloth/Bitmap (2).png' },
+            { id: 3, name: 'Cotton T-Shirt', price: 24.99, category: 'Clothing', image: 'assests/cloth/Bitmap.png' },
+            { id: 4, name: 'Real Leather Bifold Wallet', price: 39.99, category: 'Clothing', image: 'assests/cloth/image 24.png' },
+            { id: 5, name: 'Denim Crossbody Bag', price: 44.99, category: 'Clothing', image: 'assests/cloth/image 26.png' },
+            { id: 6, name: 'Classic Wool-Blend Overcoat', price: 149.99, category: 'Clothing', image: 'assests/cloth/image 30.png' },
+            // Interior
+            { id: 7, name: 'Comfortable Sofa Chair', price: 199.99, category: 'Interior', image: 'assests/interior/1.png' },
+            { id: 8, name: 'Handmade Terracotta Pot', price: 34.99, category: 'Interior', image: 'assests/interior/3.png' },
+            { id: 9, name: 'Modern Lamp', price: 59.99, category: 'Interior', image: 'assests/interior/6.png' },
+            { id: 10, name: 'Portable Adjustable Chair', price: 79.99, category: 'Interior', image: 'assests/interior/7.png' },
+            { id: 11, name: 'Kitchen Mixer', price: 129.99, category: 'Interior', image: 'assests/interior/8.png' },
+            { id: 12, name: 'Electric Juicer', price: 69.99, category: 'Interior', image: 'assests/interior/9.png' },
+            { id: 13, name: 'Decorative Plant', price: 29.99, category: 'Interior', image: 'assests/interior/image 89.png' },
+            { id: 14, name: 'Terracotta Pot', price: 34.99, category: 'Interior', image: 'assests/interior/image 90.png' },
+            { id: 15, name: 'Comfortable Mattress', price: 299.99, category: 'Interior', image: 'assests/interior/image 93.png' },
+            // Tech
+            { id: 16, name: 'Digital Camera', price: 249.99, category: 'Technology', image: 'assests/tech/6.png' },
+            { id: 17, name: 'Smart Watch', price: 179.99, category: 'Technology', image: 'assests/tech/8.png' },
+            { id: 18, name: 'iPhone', price: 999.99, category: 'Technology', image: 'assests/tech/image 23.png' },
+            { id: 19, name: 'Premium Headphones', price: 149.99, category: 'Technology', image: 'assests/tech/image 29.png' },
+            { id: 20, name: 'Tablet', price: 399.99, category: 'Technology', image: 'assests/tech/image 32.png' },
+            { id: 21, name: 'iPhone', price: 899.99, category: 'Technology', image: 'assests/tech/image 33.png' },
+            { id: 22, name: 'Laptop', price: 899.99, category: 'Technology', image: 'assests/tech/image 34.png' },
+            { id: 23, name: 'Thormus Device', price: 199.99, category: 'Technology', image: 'assests/tech/image 85.png' },
+            { id: 24, name: 'Wireless Headphones', price: 89.99, category: 'Technology', image: 'assests/tech/image 86.png' }
+        ];
+
+        // ===== SCROLL TO SECTION FUNCTION =====
+        window.scrollToSection = function(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        // ===== SEARCH FUNCTIONALITY =====
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const searchResults = document.getElementById('searchResults');
+
+        function performSearch(query) {
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            const results = allProducts.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase()) ||
+                product.category.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            displaySearchResults(results);
+        }
+
+        function displaySearchResults(results) {
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No products found</div>';
+            } else {
+                searchResults.innerHTML = results.map(product => `
+                    <div class="search-result-item" onclick="location.href='product-details.html?id=${product.id}'">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.src='https://via.placeholder.com/50x50'">
+                        <div class="search-result-info">
+                            <h4>${product.name}</h4>
+                            <p>$${product.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            searchResults.style.display = 'block';
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                performSearch(e.target.value);
+            });
+
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        }
+
+        // ===== WISHLIST FUNCTIONALITY =====
+        window.toggleWishlist = function(productId, element) {
+            event.stopPropagation();
+            
+            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const icon = element.querySelector('i');
+            
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                icon.classList.remove('fas');
+                icon.classList.add('far');
+                element.classList.remove('active');
+                showNotification('Removed from wishlist');
+            } else {
+                wishlist.push(productId);
+                icon.classList.remove('far');
+                icon.classList.add('fas');
+                element.classList.add('active');
+                showNotification('Added to wishlist');
+            }
+            
+            localStorage.setItem('wishlist', JSON.stringify(wishlist));
+            updateWishlistCount();
+            
+            // Animation
+            element.style.transform = 'scale(1.2)';
+            setTimeout(() => {
+                element.style.transform = 'scale(1)';
+            }, 200);
+        };
+
+        // Load wishlist status on page load
+        function loadWishlistStatus() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            document.querySelectorAll('.wishlist-icon').forEach(icon => {
+                const onclickAttr = icon.getAttribute('onclick');
+                if (onclickAttr) {
+                    const match = onclickAttr.match(/toggleWishlist\((\d+)/);
+                    if (match) {
+                        const productId = parseInt(match[1]);
+                        if (wishlist.includes(productId)) {
+                            const heartIcon = icon.querySelector('i');
+                            heartIcon.classList.remove('far');
+                            heartIcon.classList.add('fas');
+                            icon.classList.add('active');
+                        }
+                    }
+                }
+            });
+        }
+
+        // ===== CART COUNT =====
         function updateCartCount() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -687,7 +1269,74 @@
                 }
             }
         }
+
+        // ===== WISHLIST COUNT =====
+        function updateWishlistCount() {
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+            const wishlistCount = document.getElementById('wishlistCount');
+            if (wishlistCount) {
+                if (wishlist.length > 0) {
+                    wishlistCount.textContent = wishlist.length;
+                    wishlistCount.style.display = 'inline';
+                } else {
+                    wishlistCount.style.display = 'none';
+                }
+            }
+        }
+
+        // ===== NOTIFICATION FUNCTION =====
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #23A6F0;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 9999;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2000);
+        }
+
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ===== CONTACT FORM HANDLER =====
+        window.handleContactSubmit = function(event) {
+            event.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            event.target.reset();
+        };
+
+        // Initialize
         updateCartCount();
+        updateWishlistCount();
+        loadWishlistStatus();
     </script>
 </body>
 </html>
