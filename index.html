@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce Store</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Ecommerce Store - Home</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -17,6 +16,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
             color: #252B42;
+            background: #FAFAFA;
         }
         
         /* Header */
@@ -27,10 +27,14 @@
             padding: 20px 40px;
             background: white;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         
         .logo img {
             height: 40px;
+            cursor: pointer;
         }
         
         nav ul {
@@ -43,16 +47,21 @@
             text-decoration: none;
             color: #737373;
             font-weight: 600;
+            font-size: 14px;
+            transition: color 0.3s;
         }
         
+        nav a:hover,
         nav a.active {
-            color: #252B42;
+            color: #23A6F0;
         }
         
         .header-icons {
             display: flex;
             gap: 20px;
             color: #23A6F0;
+            font-size: 18px;
+            cursor: pointer;
         }
         
         /* Hero Section */
@@ -92,11 +101,13 @@
         .hero h1 {
             font-size: 58px;
             margin-bottom: 20px;
+            line-height: 1.2;
         }
         
         .hero p {
             font-size: 20px;
             margin-bottom: 30px;
+            opacity: 0.9;
         }
         
         .btn {
@@ -107,31 +118,12 @@
             text-decoration: none;
             border-radius: 5px;
             font-weight: 700;
+            transition: all 0.3s;
         }
         
-        /* Brands Section */
-        .brands {
-            padding: 60px 40px;
-            text-align: center;
-        }
-        
-        .brand-grid {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        
-        .brand-grid img {
-            height: 60px;
-            width: auto;
-            opacity: 0.7;
-            transition: opacity 0.3s;
-        }
-        
-        .brand-grid img:hover {
-            opacity: 1;
+        .btn:hover {
+            background: #1a7dc0;
+            transform: translateY(-2px);
         }
         
         /* Services Section */
@@ -159,6 +151,11 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
         }
         
         .service-card img {
@@ -171,17 +168,30 @@
             padding: 20px;
             text-align: center;
             font-size: 16px;
+            color: #252B42;
         }
         
-        /* Products Section */
-        .products-section {
+        /* Featured Products Section */
+        .featured-section {
             padding: 60px 40px;
         }
         
-        .category-title {
+        .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto 30px;
+        }
+        
+        .category-header h2 {
             font-size: 24px;
-            margin: 40px 0 20px;
-            text-align: center;
+        }
+        
+        .view-all {
+            color: #23A6F0;
+            text-decoration: none;
+            font-weight: 600;
         }
         
         .product-grid {
@@ -193,27 +203,38 @@
         }
         
         .product-card {
-            border: 1px solid #eee;
+            background: white;
             border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
             cursor: pointer;
         }
         
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
         
-        .product-card img {
-            width: 100%;
+        .product-image {
             height: 250px;
+            overflow: hidden;
+            background: #f5f5f5;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
         }
         
         .product-info {
             padding: 20px;
-            text-align: center;
         }
         
         .product-info h3 {
@@ -225,33 +246,22 @@
             color: #23A6F0;
             font-size: 18px;
             font-weight: 700;
-            margin-bottom: 15px;
-        }
-        
-        .btn-small {
-            background: #23A6F0;
-            color: white;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
         }
         
         /* Flags Section */
         .flags-section {
             padding: 60px 40px;
-            background: #FAFAFA;
+            background: white;
             text-align: center;
         }
         
         .flag-grid {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             flex-wrap: wrap;
-            margin-top: 40px;
+            max-width: 1200px;
+            margin: 40px auto 0;
         }
         
         .flag-item {
@@ -279,6 +289,7 @@
             background: #252B42;
             color: white;
             padding: 60px 40px 20px;
+            margin-top: 60px;
         }
         
         .footer-content {
@@ -304,6 +315,11 @@
         .footer-section a {
             color: #BDBDBD;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #23A6F0;
         }
         
         .footer-bottom {
@@ -333,14 +349,14 @@
                 justify-content: center;
             }
             
+            .hero h1 {
+                font-size: 36px;
+            }
+            
             .service-grid,
             .product-grid,
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .hero h1 {
-                font-size: 36px;
             }
         }
         
@@ -350,13 +366,17 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
+        <div class="logo" onclick="location.href='index.html'">
             <img src="assests/logo/logo-colored.png" alt="Bandage">
         </div>
         
@@ -377,30 +397,19 @@
         </div>
     </header>
 
-    <!-- Hero Section with Background Image -->
+    <!-- Hero Section with your background image -->
     <section class="hero" style="background-image: url('assests/background/Group 969.png');">
         <div class="hero-content">
-            <p class="hero-tagline">SUMMER 2020</p>
+            <p class="hero-tagline">SUMMER 2026</p>
             <h1>NEW COLLECTION</h1>
-            <p>We know how large objects will act, but things on a small scale.</p>
-            <a href="#" class="btn">SHOP NOW</a>
+            <p>Discover the latest trends in fashion, interior design, and technology</p>
+            <a href="products.html" class="btn">SHOP NOW</a>
         </div>
     </section>
 
-    <!-- Brands Section (using logo folder) -->
-    <section class="brands">
-        <h2 class="section-title">Our Brands</h2>
-        <div class="brand-grid">
-            <img src="assests/logo/logo-colored.png" alt="Brand">
-            <img src="assests/logo/logo-colored.png" alt="Brand">
-            <img src="assests/logo/logo-colored.png" alt="Brand">
-            <img src="assests/logo/logo-colored.png" alt="Brand">
-        </div>
-    </section>
-
-    <!-- Services Section -->
+    <!-- Services Section with your service images -->
     <section class="services">
-        <h2 class="section-title">Service Section</h2>
+        <h2 class="section-title">Our Services</h2>
         <div class="service-grid">
             <div class="service-card">
                 <img src="assests/services/image 98.png" alt="Service">
@@ -412,127 +421,148 @@
             </div>
             <div class="service-card">
                 <img src="assests/services/image 107.png" alt="Service">
-                <h3>Fast, reliable shipping by ocean or air</h3>
+                <h3>Fast, reliable shipping</h3>
             </div>
             <div class="service-card">
                 <img src="assests/services/Mask group.png" alt="Service">
-                <h3>Product monitoring and inspection</h3>
+                <h3>Product monitoring</h3>
             </div>
         </div>
     </section>
 
-    <!-- Cloth Products Section -->
-    <section class="products-section">
-        <h2 class="section-title">Fashion Collection</h2>
-        <div class="product-grid">
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/cloth/2 1.png" alt="Fashion Product">
-                <div class="product-info">
-                    <h3>Casual Shirt</h3>
-                    <p class="product-price">$29.99</p>
-                    <button class="btn-small">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/cloth/Bitmap.png" alt="Fashion Product">
-                <div class="product-info">
-                    <h3>Summer Dress</h3>
-                    <p class="product-price">$49.99</p>
-                    <button class="btn-small">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/cloth/Bitmap (2).png" alt="Fashion Product">
-                <div class="product-info">
-                    <h3>Stylish Outfit</h3>
-                    <p class="product-price">$39.99</p>
-                    <button class="btn-small">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/cloth/image 24.png" alt="Fashion Product">
-                <div class="product-info">
-                    <h3>Fashion Item</h3>
-                    <p class="product-price">$34.99</p>
-                    <button class="btn-small">Add to Cart</button>
-                </div>
-            </div>
+    <!-- Featured Clothing Products -->
+    <section class="featured-section">
+        <div class="category-header">
+            <h2>Featured Clothing</h2>
+            <a href="products.html?category=cloth" class="view-all">View All →</a>
         </div>
-    </section>
-
-    <!-- Interior Products Section -->
-    <section class="products-section">
-        <h2 class="section-title">Interior Collection</h2>
         <div class="product-grid">
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/interior/3.png" alt="Interior">
-                <div class="product-info">
-                    <h3>Modern Chair</h3>
-                    <p class="product-price">$149.99</p>
-                    <button class="btn-small">Add to Cart</button>
+            <div class="product-card" onclick="location.href='product-details.html?id=1'">
+                <div class="product-image">
+                    <img src="assests/cloth/2 1.png" alt="Brown Faux Fur Jacket">
                 </div>
-            </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/interior/6.png" alt="Interior">
                 <div class="product-info">
-                    <h3>Table Lamp</h3>
-                    <p class="product-price">$79.99</p>
-                    <button class="btn-small">Add to Cart</button>
-                </div>
-            </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/interior/7.png" alt="Interior">
-                <div class="product-info">
-                    <h3>Wall Decor</h3>
+                    <h3>Brown Faux Fur Jacket</h3>
                     <p class="product-price">$89.99</p>
-                    <button class="btn-small">Add to Cart</button>
                 </div>
             </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/interior/8.png" alt="Interior">
+            <div class="product-card" onclick="location.href='product-details.html?id=2'">
+                <div class="product-image">
+                    <img src="assests/cloth/Bitmap (2).png" alt="Slim-Fit Cargo Pants">
+                </div>
                 <div class="product-info">
-                    <h3>Vase Set</h3>
-                    <p class="product-price">$59.99</p>
-                    <button class="btn-small">Add to Cart</button>
+                    <h3>Slim-Fit Cargo Pants</h3>
+                    <p class="product-price">$49.99</p>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html?id=3'">
+                <div class="product-image">
+                    <img src="assests/cloth/Bitmap.png" alt="Cotton T-Shirt">
+                </div>
+                <div class="product-info">
+                    <h3>Cotton T-Shirt</h3>
+                    <p class="product-price">$24.99</p>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html?id=6'">
+                <div class="product-image">
+                    <img src="assests/cloth/image 30.png" alt="Wool-Blend Overcoat">
+                </div>
+                <div class="product-info">
+                    <h3>Wool-Blend Overcoat</h3>
+                    <p class="product-price">$149.99</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tech Products Section -->
-    <section class="products-section">
-        <h2 class="section-title">Tech Collection</h2>
+    <!-- Featured Interior Products -->
+    <section class="featured-section">
+        <div class="category-header">
+            <h2>Featured Interior</h2>
+            <a href="products.html?category=interior" class="view-all">View All →</a>
+        </div>
         <div class="product-grid">
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/tech/image 23.png" alt="Tech">
-                <div class="product-info">
-                    <h3>Wireless Headphones</h3>
-                    <p class="product-price">$99.99</p>
-                    <button class="btn-small">Add to Cart</button>
+            <div class="product-card" onclick="location.href='product-details.html?id=7'">
+                <div class="product-image">
+                    <img src="assests/interior/1.png" alt="Sofa Chair">
                 </div>
-            </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/tech/image 29.png" alt="Tech">
                 <div class="product-info">
-                    <h3>Smart Watch</h3>
+                    <h3>Comfortable Sofa Chair</h3>
                     <p class="product-price">$199.99</p>
-                    <button class="btn-small">Add to Cart</button>
                 </div>
             </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/tech/image 32.png" alt="Tech">
+            <div class="product-card" onclick="location.href='product-details.html?id=8'">
+                <div class="product-image">
+                    <img src="assests/interior/3.png" alt="Terracotta Pot">
+                </div>
                 <div class="product-info">
-                    <h3>Bluetooth Speaker</h3>
+                    <h3>Handmade Terracotta Pot</h3>
+                    <p class="product-price">$34.99</p>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html?id=10'">
+                <div class="product-image">
+                    <img src="assests/interior/7.png" alt="Adjustable Chair">
+                </div>
+                <div class="product-info">
+                    <h3>Portable Adjustable Chair</h3>
                     <p class="product-price">$79.99</p>
-                    <button class="btn-small">Add to Cart</button>
                 </div>
             </div>
-            <div class="product-card" onclick="location.href='product-details.html'">
-                <img src="assests/tech/image 33.png" alt="Tech">
+            <div class="product-card" onclick="location.href='product-details.html?id=13'">
+                <div class="product-image">
+                    <img src="assests/interior/image 89.png" alt="Plant">
+                </div>
                 <div class="product-info">
-                    <h3>Power Bank</h3>
-                    <p class="product-price">$49.99</p>
-                    <button class="btn-small">Add to Cart</button>
+                    <h3>Decorative Plant</h3>
+                    <p class="product-price">$29.99</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Tech Products -->
+    <section class="featured-section">
+        <div class="category-header">
+            <h2>Featured Technology</h2>
+            <a href="products.html?category=tech" class="view-all">View All →</a>
+        </div>
+        <div class="product-grid">
+            <div class="product-card" onclick="location.href='product-details.html?id=16'">
+                <div class="product-image">
+                    <img src="assests/tech/6.png" alt="Camera">
+                </div>
+                <div class="product-info">
+                    <h3>Digital Camera</h3>
+                    <p class="product-price">$249.99</p>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html?id=18'">
+                <div class="product-image">
+                    <img src="assests/tech/image 23.png" alt="iPhone">
+                </div>
+                <div class="product-info">
+                    <h3>iPhone</h3>
+                    <p class="product-price">$999.99</p>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html?id=19'">
+                <div class="product-image">
+                    <img src="assests/tech/image 29.png" alt="Headphones">
+                </div>
+                <div class="product-info">
+                    <h3>Premium Headphones</h3>
+                    <p class="product-price">$149.99</p>
+                </div>
+            </div>
+            <div class="product-card" onclick="location.href='product-details.html?id=22'">
+                <div class="product-image">
+                    <img src="assests/tech/image 34.png" alt="Laptop">
+                </div>
+                <div class="product-info">
+                    <h3>Laptop</h3>
+                    <p class="product-price">$899.99</p>
                 </div>
             </div>
         </div>
@@ -609,9 +639,9 @@
             <div class="footer-section">
                 <h4>Contact</h4>
                 <ul>
-                    <li>📧 support@store.com</li>
-                    <li>📞 +1 234 567 890</li>
-                    <li>📍 123 Business St</li>
+                    <li><i class="fas fa-envelope"></i> support@store.com</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-map-marker"></i> 123 Business St</li>
                 </ul>
             </div>
         </div>
@@ -620,6 +650,15 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Simple cart count function
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            console.log('Cart items:', totalItems);
+        }
+        
+        updateCartCount();
+    </script>
 </body>
 </html>

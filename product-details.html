@@ -48,8 +48,10 @@
             color: #737373;
             font-weight: 600;
             font-size: 14px;
+            transition: color 0.3s;
         }
         
+        nav a:hover,
         nav a.active {
             color: #23A6F0;
         }
@@ -80,11 +82,11 @@
             font-weight: 600;
         }
         
-        /* Product Details */
-        .product-details {
-            padding: 40px;
+        /* Product Container */
+        .product-container {
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 40px auto;
+            padding: 0 20px;
         }
         
         .product-wrapper {
@@ -98,9 +100,8 @@
         }
         
         /* Product Images */
-        .product-images {
-            position: sticky;
-            top: 100px;
+        .product-gallery {
+            width: 100%;
         }
         
         .main-image {
@@ -109,59 +110,65 @@
             border-radius: 10px;
             overflow: hidden;
             margin-bottom: 20px;
-            cursor: zoom-in;
+            background: #f5f5f5;
         }
         
         .main-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s;
         }
         
-        .main-image:hover img {
-            transform: scale(1.1);
-        }
-        
-        .thumbnail-grid {
+        .thumbnail-list {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
         }
         
-        .thumbnail {
+        .thumbnail-item {
             width: 100%;
             height: 100px;
             border-radius: 5px;
             overflow: hidden;
             cursor: pointer;
-            opacity: 0.6;
-            transition: all 0.3s;
             border: 2px solid transparent;
+            transition: all 0.3s;
+            background: #f5f5f5;
         }
         
-        .thumbnail:hover {
+        .thumbnail-item:hover {
             opacity: 0.8;
         }
         
-        .thumbnail.active {
-            opacity: 1;
+        .thumbnail-item.active {
             border-color: #23A6F0;
         }
         
-        .thumbnail img {
+        .thumbnail-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
         
         /* Product Info */
-        .product-info h1 {
+        .product-info {
+            padding: 20px 0;
+        }
+        
+        .product-category {
+            color: #23A6F0;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .product-title {
             font-size: 32px;
             margin-bottom: 15px;
         }
         
-        .product-rating {
+        .rating {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -172,12 +179,12 @@
             color: #FFC107;
         }
         
-        .reviews-count {
+        .reviews {
             color: #737373;
             font-size: 14px;
         }
         
-        .product-price {
+        .price-box {
             margin-bottom: 20px;
         }
         
@@ -194,15 +201,15 @@
             margin-left: 10px;
         }
         
-        .product-description {
+        .description {
             color: #737373;
             line-height: 1.8;
             margin-bottom: 30px;
         }
         
         /* Options */
-        .options-section {
-            margin-bottom: 30px;
+        .option-group {
+            margin-bottom: 25px;
         }
         
         .option-label {
@@ -211,10 +218,9 @@
             display: block;
         }
         
-        .size-options {
+        .size-buttons {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
         }
         
         .size-btn {
@@ -235,37 +241,33 @@
             border-color: #23A6F0;
         }
         
-        .color-options {
+        .color-buttons {
             display: flex;
             gap: 15px;
-            margin-bottom: 20px;
         }
         
-        .color-dot {
+        .color-btn {
             width: 40px;
             height: 40px;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s;
             border: 2px solid transparent;
+            transition: all 0.3s;
         }
         
-        .color-dot:hover {
+        .color-btn:hover,
+        .color-btn.active {
             transform: scale(1.1);
-        }
-        
-        .color-dot.active {
             border-color: #23A6F0;
-            transform: scale(1.1);
         }
         
-        .color-dot.red { background: #FF4444; }
-        .color-dot.blue { background: #23A6F0; }
-        .color-dot.black { background: #252B42; }
-        .color-dot.white { background: #FFFFFF; border: 1px solid #E9E9E9; }
+        .color-btn.red { background: #FF4444; }
+        .color-btn.blue { background: #23A6F0; }
+        .color-btn.black { background: #252B42; }
+        .color-btn.white { background: #FFFFFF; border: 1px solid #ddd; }
         
         /* Quantity */
-        .quantity-selector {
+        .quantity-box {
             display: flex;
             align-items: center;
             gap: 15px;
@@ -306,7 +308,7 @@
             margin-bottom: 30px;
         }
         
-        .btn-add-to-cart {
+        .add-to-cart {
             flex: 2;
             padding: 15px;
             background: #23A6F0;
@@ -318,12 +320,11 @@
             transition: all 0.3s;
         }
         
-        .btn-add-to-cart:hover {
+        .add-to-cart:hover {
             background: #1a7dc0;
-            transform: translateY(-2px);
         }
         
-        .btn-wishlist {
+        .wishlist-btn {
             flex: 1;
             padding: 15px;
             background: white;
@@ -333,7 +334,7 @@
             transition: all 0.3s;
         }
         
-        .btn-wishlist:hover {
+        .wishlist-btn:hover {
             border-color: #23A6F0;
             color: #23A6F0;
         }
@@ -344,7 +345,7 @@
             padding-top: 20px;
         }
         
-        .info-item {
+        .delivery-item {
             display: flex;
             align-items: center;
             gap: 15px;
@@ -352,7 +353,7 @@
             color: #737373;
         }
         
-        .info-item i {
+        .delivery-item i {
             color: #23A6F0;
             width: 20px;
         }
@@ -403,7 +404,7 @@
         }
         
         /* Related Products */
-        .related-products {
+        .related-section {
             margin-top: 60px;
         }
         
@@ -466,7 +467,6 @@
         
         .footer-section h4 {
             margin-bottom: 20px;
-            color: white;
         }
         
         .footer-section ul {
@@ -480,6 +480,11 @@
         .footer-section a {
             color: #BDBDBD;
             text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #23A6F0;
         }
         
         .footer-bottom {
@@ -490,22 +495,28 @@
         }
         
         /* Responsive */
-        @media (max-width: 1024px) {
-            .related-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .product-wrapper {
                 grid-template-columns: 1fr;
             }
             
-            .product-images {
-                position: static;
+            .related-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 15px;
             }
             
-            .related-grid,
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
@@ -548,37 +559,27 @@
     </header>
 
     <div class="breadcrumb">
-        <a href="index.html">Home</a> > <a href="products.html">Products</a> > <span id="productName">Product Details</span>
+        <a href="index.html">Home</a> > <a href="products.html">Products</a> > <span id="breadcrumb-name">Product Details</span>
     </div>
 
-    <div class="product-details">
+    <div class="product-container">
         <div class="product-wrapper">
-            <!-- Product Images -->
-            <div class="product-images">
-                <div class="main-image" id="mainImage">
-                    <img src="assests/cloth/2 1.png" alt="Product" id="mainProductImage">
+            <!-- Product Images Column -->
+            <div class="product-gallery">
+                <div class="main-image">
+                    <img id="main-product-image" src="" alt="Product">
                 </div>
-                <div class="thumbnail-grid" id="thumbnailGrid">
-                    <div class="thumbnail active" onclick="changeImage('assests/cloth/2 1.png')">
-                        <img src="assests/cloth/2 1.png" alt="Thumbnail">
-                    </div>
-                    <div class="thumbnail" onclick="changeImage('assests/cloth/Bitmap.png')">
-                        <img src="assests/cloth/Bitmap.png" alt="Thumbnail">
-                    </div>
-                    <div class="thumbnail" onclick="changeImage('assests/cloth/Bitmap (2).png')">
-                        <img src="assests/cloth/Bitmap (2).png" alt="Thumbnail">
-                    </div>
-                    <div class="thumbnail" onclick="changeImage('assests/cloth/image 24.png')">
-                        <img src="assests/cloth/image 24.png" alt="Thumbnail">
-                    </div>
+                <div class="thumbnail-list" id="thumbnail-list">
+                    <!-- Thumbnails will be loaded by JavaScript -->
                 </div>
             </div>
 
-            <!-- Product Info -->
+            <!-- Product Info Column -->
             <div class="product-info">
-                <h1 id="productTitle">Casual Shirt</h1>
+                <div class="product-category" id="product-category"></div>
+                <h1 class="product-title" id="product-name"></h1>
                 
-                <div class="product-rating">
+                <div class="rating">
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -586,22 +587,20 @@
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star-half-alt"></i>
                     </div>
-                    <span class="reviews-count">(120 reviews)</span>
+                    <span class="reviews">(120 reviews)</span>
                 </div>
 
-                <div class="product-price">
-                    <span class="current-price" id="productPrice">$29.99</span>
-                    <span class="old-price">$39.99</span>
+                <div class="price-box">
+                    <span class="current-price" id="product-price"></span>
+                    <span class="old-price" id="old-price"></span>
                 </div>
 
-                <p class="product-description" id="productDescription">
-                    High-quality casual shirt made from 100% cotton. Perfect for everyday wear, office, or casual outings. Available in multiple colors and sizes.
-                </p>
+                <p class="description" id="product-description"></p>
 
-                <!-- Size Options -->
-                <div class="options-section">
+                <!-- Size Options (shown only for clothing) -->
+                <div class="option-group" id="size-options" style="display: none;">
                     <span class="option-label">Select Size</span>
-                    <div class="size-options">
+                    <div class="size-buttons">
                         <button class="size-btn" onclick="selectSize('S')">S</button>
                         <button class="size-btn active" onclick="selectSize('M')">M</button>
                         <button class="size-btn" onclick="selectSize('L')">L</button>
@@ -610,18 +609,18 @@
                 </div>
 
                 <!-- Color Options -->
-                <div class="options-section">
+                <div class="option-group">
                     <span class="option-label">Select Color</span>
-                    <div class="color-options">
-                        <div class="color-dot red active" onclick="selectColor('red')"></div>
-                        <div class="color-dot blue" onclick="selectColor('blue')"></div>
-                        <div class="color-dot black" onclick="selectColor('black')"></div>
-                        <div class="color-dot white" onclick="selectColor('white')"></div>
+                    <div class="color-buttons">
+                        <div class="color-btn red active" onclick="selectColor('red')"></div>
+                        <div class="color-btn blue" onclick="selectColor('blue')"></div>
+                        <div class="color-btn black" onclick="selectColor('black')"></div>
+                        <div class="color-btn white" onclick="selectColor('white')"></div>
                     </div>
                 </div>
 
                 <!-- Quantity -->
-                <div class="quantity-selector">
+                <div class="quantity-box">
                     <button class="quantity-btn" onclick="decreaseQuantity()">-</button>
                     <input type="number" class="quantity-input" id="quantity" value="1" min="1" max="10" readonly>
                     <button class="quantity-btn" onclick="increaseQuantity()">+</button>
@@ -629,25 +628,25 @@
 
                 <!-- Action Buttons -->
                 <div class="action-buttons">
-                    <button class="btn-add-to-cart" onclick="addToCart()">
+                    <button class="add-to-cart" onclick="addToCart()">
                         <i class="fas fa-shopping-cart"></i> Add to Cart
                     </button>
-                    <button class="btn-wishlist" onclick="toggleWishlist(this)">
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)">
                         <i class="far fa-heart"></i>
                     </button>
                 </div>
 
                 <!-- Delivery Info -->
                 <div class="delivery-info">
-                    <div class="info-item">
+                    <div class="delivery-item">
                         <i class="fas fa-truck"></i>
                         <span>Free delivery on orders over $50</span>
                     </div>
-                    <div class="info-item">
+                    <div class="delivery-item">
                         <i class="fas fa-undo"></i>
                         <span>30-day easy returns</span>
                     </div>
-                    <div class="info-item">
+                    <div class="delivery-item">
                         <i class="fas fa-shield-alt"></i>
                         <span>2-year warranty</span>
                     </div>
@@ -674,7 +673,7 @@
                     </div>
                     <span class="review-date">2 days ago</span>
                 </div>
-                <p class="review-text">Excellent product! The quality is amazing and fits perfectly. Highly recommended!</p>
+                <p class="review-text">Excellent product! The quality is amazing. Highly recommended!</p>
             </div>
 
             <div class="review-card">
@@ -697,37 +696,10 @@
         </div>
 
         <!-- Related Products -->
-        <div class="related-products">
+        <div class="related-section">
             <h2 class="section-title">You May Also Like</h2>
-            <div class="related-grid">
-                <div class="related-card" onclick="location.href='product-details.html?id=2'">
-                    <img src="assests/cloth/Bitmap.png" alt="Related">
-                    <div class="related-info">
-                        <h4>Summer Dress</h4>
-                        <span class="related-price">$49.99</span>
-                    </div>
-                </div>
-                <div class="related-card" onclick="location.href='product-details.html?id=3'">
-                    <img src="assests/cloth/Bitmap (2).png" alt="Related">
-                    <div class="related-info">
-                        <h4>Stylish Outfit</h4>
-                        <span class="related-price">$39.99</span>
-                    </div>
-                </div>
-                <div class="related-card" onclick="location.href='product-details.html?id=15'">
-                    <img src="assests/tech/image 23.png" alt="Related">
-                    <div class="related-info">
-                        <h4>Headphones</h4>
-                        <span class="related-price">$99.99</span>
-                    </div>
-                </div>
-                <div class="related-card" onclick="location.href='product-details.html?id=7'">
-                    <img src="assests/interior/3.png" alt="Related">
-                    <div class="related-info">
-                        <h4>Modern Chair</h4>
-                        <span class="related-price">$149.99</span>
-                    </div>
-                </div>
+            <div class="related-grid" id="related-grid">
+                <!-- Related products will be loaded by JavaScript -->
             </div>
         </div>
     </div>
@@ -764,9 +736,9 @@
             <div class="footer-section">
                 <h4>Contact</h4>
                 <ul>
-                    <li>📧 support@store.com</li>
-                    <li>📞 +1 234 567 890</li>
-                    <li>📍 123 Business St</li>
+                    <li><i class="fas fa-envelope"></i> support@store.com</li>
+                    <li><i class="fas fa-phone"></i> +1 234 567 890</li>
+                    <li><i class="fas fa-map-marker"></i> 123 Business St</li>
                 </ul>
             </div>
         </div>
@@ -776,82 +748,397 @@
     </footer>
 
     <script>
+        // Complete Product Database (same as products.html)
+        const products = [
+            // CLOTHING PRODUCTS
+            { 
+                id: 1, 
+                name: 'Brown Faux Fur Jacket', 
+                price: 89.99, 
+                oldPrice: 129.99,
+                category: 'cloth', 
+                categoryName: 'Clothing',
+                image: 'assests/cloth/2 1.png',
+                images: ['assests/cloth/2 1.png', 'assests/cloth/Bitmap.png', 'assests/cloth/Bitmap (2).png', 'assests/cloth/image 24.png'],
+                description: 'Stylish brown faux fur jacket, soft and warm for winter fashion. Made with high-quality materials for lasting comfort and style.'
+            },
+            { 
+                id: 2, 
+                name: 'Slim-Fit Cargo Pants', 
+                price: 49.99, 
+                oldPrice: 69.99,
+                category: 'cloth', 
+                categoryName: 'Clothing',
+                image: 'assests/cloth/Bitmap (2).png',
+                images: ['assests/cloth/Bitmap (2).png', 'assests/cloth/2 1.png', 'assests/cloth/Bitmap.png', 'assests/cloth/image 26.png'],
+                description: 'Trendy slim-fit cargo pants with multiple pockets, comfortable for casual wear. Durable fabric perfect for everyday use.'
+            },
+            { 
+                id: 3, 
+                name: 'Cotton T-Shirt', 
+                price: 24.99, 
+                oldPrice: 34.99,
+                category: 'cloth', 
+                categoryName: 'Clothing',
+                image: 'assests/cloth/Bitmap.png',
+                images: ['assests/cloth/Bitmap.png', 'assests/cloth/2 1.png', 'assests/cloth/Bitmap (2).png', 'assests/cloth/image 30.png'],
+                description: 'Premium quality 100% cotton t-shirt, soft and breathable for everyday wear. Available in multiple colors.'
+            },
+            { 
+                id: 4, 
+                name: 'Real Leather Bifold Wallet', 
+                price: 39.99, 
+                oldPrice: 59.99,
+                category: 'cloth', 
+                categoryName: 'Clothing',
+                image: 'assests/cloth/image 24.png',
+                images: ['assests/cloth/image 24.png', 'assests/cloth/2 1.png', 'assests/cloth/Bitmap.png', 'assests/cloth/image 26.png'],
+                description: 'Genuine leather bifold wallet with multiple card slots and sleek design. Compact and stylish.'
+            },
+            { 
+                id: 5, 
+                name: 'Denim Crossbody Bag', 
+                price: 44.99, 
+                oldPrice: 64.99,
+                category: 'cloth', 
+                categoryName: 'Clothing',
+                image: 'assests/cloth/image 26.png',
+                images: ['assests/cloth/image 26.png', 'assests/cloth/2 1.png', 'assests/cloth/Bitmap.png', 'assests/cloth/image 24.png'],
+                description: 'Fashionable denim crossbody bag, perfect for casual outings. Spacious and trendy.'
+            },
+            { 
+                id: 6, 
+                name: 'Classic Wool-Blend Overcoat', 
+                price: 149.99, 
+                oldPrice: 199.99,
+                category: 'cloth', 
+                categoryName: 'Clothing',
+                image: 'assests/cloth/image 30.png',
+                images: ['assests/cloth/image 30.png', 'assests/cloth/2 1.png', 'assests/cloth/Bitmap.png', 'assests/cloth/Bitmap (2).png'],
+                description: 'Elegant wool-blend overcoat, warm and stylish for cold weather. Perfect for formal occasions.'
+            },
+            
+            // INTERIOR PRODUCTS
+            { 
+                id: 7, 
+                name: 'Comfortable Sofa Chair', 
+                price: 199.99, 
+                oldPrice: 279.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/1.png',
+                images: ['assests/interior/1.png', 'assests/interior/3.png', 'assests/interior/7.png', 'assests/interior/image 89.png'],
+                description: 'Plush comfortable sofa-style chair, perfect for relaxing in your living room.'
+            },
+            { 
+                id: 8, 
+                name: 'Handmade Terracotta Pot', 
+                price: 34.99, 
+                oldPrice: 49.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/3.png',
+                images: ['assests/interior/3.png', 'assests/interior/image 90.png', 'assests/interior/1.png', 'assests/interior/image 89.png'],
+                description: 'Real handmade terracotta pot with natural brown finish, perfect for plants.'
+            },
+            { 
+                id: 9, 
+                name: 'Modern Lamp', 
+                price: 59.99, 
+                oldPrice: 79.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/6.png',
+                images: ['assests/interior/6.png', 'assests/interior/1.png', 'assests/interior/7.png', 'assests/interior/8.png'],
+                description: 'Stylish modern lamp for ambient lighting in your home or office.'
+            },
+            { 
+                id: 10, 
+                name: 'Portable Adjustable Chair', 
+                price: 79.99, 
+                oldPrice: 109.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/7.png',
+                images: ['assests/interior/7.png', 'assests/interior/1.png', 'assests/interior/6.png', 'assests/interior/8.png'],
+                description: 'Adjustable chair that can be carried anywhere, perfect for flexible seating.'
+            },
+            { 
+                id: 11, 
+                name: 'Kitchen Mixer', 
+                price: 129.99, 
+                oldPrice: 169.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/8.png',
+                images: ['assests/interior/8.png', 'assests/interior/9.png', 'assests/interior/6.png', 'assests/interior/7.png'],
+                description: 'Electric kitchen mixer for baking and cooking. Powerful and easy to use.'
+            },
+            { 
+                id: 12, 
+                name: 'Electric Juicer', 
+                price: 69.99, 
+                oldPrice: 89.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/9.png',
+                images: ['assests/interior/9.png', 'assests/interior/8.png', 'assests/interior/6.png', 'assests/interior/7.png'],
+                description: 'Electric juicer for fresh juices at home. Easy to clean and maintain.'
+            },
+            { 
+                id: 13, 
+                name: 'Decorative Plant', 
+                price: 29.99, 
+                oldPrice: 39.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/image 89.png',
+                images: ['assests/interior/image 89.png', 'assests/interior/3.png', 'assests/interior/image 90.png', 'assests/interior/1.png'],
+                description: 'Beautiful decorative plant for home or office. No maintenance required.'
+            },
+            { 
+                id: 14, 
+                name: 'Terracotta Pot', 
+                price: 34.99, 
+                oldPrice: 44.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/image 90.png',
+                images: ['assests/interior/image 90.png', 'assests/interior/3.png', 'assests/interior/image 89.png', 'assests/interior/1.png'],
+                description: 'Handmade terracotta pot with natural brown finish, similar to image 3.'
+            },
+            { 
+                id: 15, 
+                name: 'Comfortable Mattress', 
+                price: 299.99, 
+                oldPrice: 399.99,
+                category: 'interior', 
+                categoryName: 'Interior',
+                image: 'assests/interior/image 93.png',
+                images: ['assests/interior/image 93.png', 'assests/interior/1.png', 'assests/interior/7.png', 'assests/interior/image 89.png'],
+                description: 'Comfortable mattress for quality sleep. Medium-firm support.'
+            },
+            
+            // TECH PRODUCTS
+            { 
+                id: 16, 
+                name: 'Digital Camera', 
+                price: 249.99, 
+                oldPrice: 329.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/6.png',
+                images: ['assests/tech/6.png', 'assests/tech/image 23.png', 'assests/tech/image 29.png', 'assests/tech/image 34.png'],
+                description: 'High-resolution digital camera with advanced features for photography enthusiasts.'
+            },
+            { 
+                id: 17, 
+                name: 'Smart Watch', 
+                price: 179.99, 
+                oldPrice: 229.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/8.png',
+                images: ['assests/tech/8.png', 'assests/tech/image 23.png', 'assests/tech/image 29.png', 'assests/tech/image 86.png'],
+                description: 'Modern smartwatch with fitness tracking, notifications, and sleek design.'
+            },
+            { 
+                id: 18, 
+                name: 'iPhone', 
+                price: 999.99, 
+                oldPrice: 1199.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/image 23.png',
+                images: ['assests/tech/image 23.png', 'assests/tech/image 33.png', 'assests/tech/image 29.png', 'assests/tech/image 34.png'],
+                description: 'Latest model iPhone with advanced camera and powerful performance.'
+            },
+            { 
+                id: 19, 
+                name: 'Premium Headphones', 
+                price: 149.99, 
+                oldPrice: 199.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/image 29.png',
+                images: ['assests/tech/image 29.png', 'assests/tech/image 86.png', 'assests/tech/image 23.png', 'assests/tech/image 32.png'],
+                description: 'High-quality headphones with superior sound and comfortable design.'
+            },
+            { 
+                id: 20, 
+                name: 'Tablet', 
+                price: 399.99, 
+                oldPrice: 499.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/image 32.png',
+                images: ['assests/tech/image 32.png', 'assests/tech/image 23.png', 'assests/tech/image 34.png', 'assests/tech/image 29.png'],
+                description: 'Portable tablet perfect for work and entertainment, with sharp display.'
+            },
+            { 
+                id: 21, 
+                name: 'iPhone', 
+                price: 899.99, 
+                oldPrice: 1099.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/image 33.png',
+                images: ['assests/tech/image 33.png', 'assests/tech/image 23.png', 'assests/tech/image 29.png', 'assests/tech/image 34.png'],
+                description: 'iPhone with great features and sleek design.'
+            },
+            { 
+                id: 22, 
+                name: 'Laptop', 
+                price: 899.99, 
+                oldPrice: 1199.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/image 34.png',
+                images: ['assests/tech/image 34.png', 'assests/tech/image 23.png', 'assests/tech/image 32.png', 'assests/tech/image 29.png'],
+                description: 'Powerful laptop for work and play, with fast performance.'
+            },
+            { 
+                id: 23, 
+                name: 'Thormus Device', 
+                price: 199.99, 
+                oldPrice: 249.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/image 85.png',
+                images: ['assests/tech/image 85.png', 'assests/tech/image 86.png', 'assests/tech/image 23.png', 'assests/tech/image 29.png'],
+                description: 'Specialized Thormus device for professional use.'
+            },
+            { 
+                id: 24, 
+                name: 'Wireless Headphones', 
+                price: 89.99, 
+                oldPrice: 129.99,
+                category: 'tech', 
+                categoryName: 'Technology',
+                image: 'assests/tech/image 86.png',
+                images: ['assests/tech/image 86.png', 'assests/tech/image 29.png', 'assests/tech/image 23.png', 'assests/tech/image 32.png'],
+                description: 'Bluetooth wireless headphones with long battery life.'
+            }
+        ];
+
         // Get product ID from URL
         const urlParams = new URLSearchParams(window.location.search);
         const productId = urlParams.get('id') || '1';
-
-        // Product data (same as products page)
-        const products = {
-            1: { name: 'Casual Shirt', price: 29.99, category: 'cloth', image: 'assests/cloth/2 1.png', images: ['assests/cloth/2 1.png', 'assests/cloth/Bitmap.png', 'assests/cloth/Bitmap (2).png', 'assests/cloth/image 24.png'] },
-            2: { name: 'Summer Dress', price: 49.99, category: 'cloth', image: 'assests/cloth/Bitmap.png', images: ['assests/cloth/Bitmap.png', 'assests/cloth/2 1.png', 'assests/cloth/Bitmap (2).png', 'assests/cloth/image 24.png'] },
-            3: { name: 'Stylish Outfit', price: 39.99, category: 'cloth', image: 'assests/cloth/Bitmap (2).png', images: ['assests/cloth/Bitmap (2).png', 'assests/cloth/2 1.png', 'assests/cloth/Bitmap.png', 'assests/cloth/image 24.png'] },
-            7: { name: 'Modern Chair', price: 149.99, category: 'interior', image: 'assests/interior/3.png', images: ['assests/interior/3.png', 'assests/interior/6.png', 'assests/interior/7.png', 'assests/interior/8.png'] },
-            15: { name: 'Wireless Headphones', price: 99.99, category: 'tech', image: 'assests/tech/image 23.png', images: ['assests/tech/image 23.png', 'assests/tech/image 29.png', 'assests/tech/image 32.png', 'assests/tech/image 33.png'] }
-        };
+        
+        // Find the product
+        const product = products.find(p => p.id == productId) || products[0];
 
         // Load product details
-        const product = products[productId] || products[1];
-        
-        document.getElementById('productTitle').textContent = product.name;
-        document.getElementById('productPrice').textContent = `$${product.price}`;
-        document.getElementById('productName').textContent = product.name;
-        document.getElementById('mainProductImage').src = product.image;
-
-        // Load thumbnails
-        if (product.images) {
-            const thumbnails = product.images.map((img, index) => `
-                <div class="thumbnail ${index === 0 ? 'active' : ''}" onclick="changeImage('${img}')">
-                    <img src="${img}" alt="Thumbnail">
-                </div>
-            `).join('');
-            document.getElementById('thumbnailGrid').innerHTML = thumbnails;
+        function loadProductDetails() {
+            document.getElementById('product-category').textContent = product.categoryName;
+            document.getElementById('product-name').textContent = product.name;
+            document.getElementById('product-price').textContent = '$' + product.price.toFixed(2);
+            document.getElementById('old-price').textContent = '$' + (product.oldPrice || product.price * 1.3).toFixed(2);
+            document.getElementById('product-description').textContent = product.description;
+            document.getElementById('breadcrumb-name').textContent = product.name;
+            
+            // Set main image
+            document.getElementById('main-product-image').src = product.image;
+            
+            // Load thumbnails
+            const thumbnailList = document.getElementById('thumbnail-list');
+            thumbnailList.innerHTML = '';
+            
+            product.images.forEach((img, index) => {
+                const thumbDiv = document.createElement('div');
+                thumbDiv.className = `thumbnail-item ${index === 0 ? 'active' : ''}`;
+                thumbDiv.innerHTML = `<img src="${img}" alt="Thumbnail" onclick="changeImage('${img}', this)">`;
+                thumbnailList.appendChild(thumbDiv);
+            });
+            
+            // Show size options only for clothing
+            if (product.category === 'cloth') {
+                document.getElementById('size-options').style.display = 'block';
+            }
+            
+            // Load related products
+            loadRelatedProducts();
         }
 
-        // Functions
-        window.changeImage = function(src) {
-            document.getElementById('mainProductImage').src = src;
-            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-            event.target.closest('.thumbnail').classList.add('active');
+        // Change main image
+        window.changeImage = function(src, element) {
+            document.getElementById('main-product-image').src = src;
+            
+            // Update active thumbnail
+            document.querySelectorAll('.thumbnail-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.parentElement.classList.add('active');
         };
 
+        // Size selection
         window.selectSize = function(size) {
-            document.querySelectorAll('.size-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.size-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
             event.target.classList.add('active');
         };
 
+        // Color selection
         window.selectColor = function(color) {
-            document.querySelectorAll('.color-dot').forEach(dot => dot.classList.remove('active'));
+            document.querySelectorAll('.color-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
             event.target.classList.add('active');
         };
 
+        // Quantity controls
         window.decreaseQuantity = function() {
-            const input = document.getElementById('quantity');
-            if (parseInt(input.value) > 1) {
-                input.value = parseInt(input.value) - 1;
-            }
+            let input = document.getElementById('quantity');
+            let value = parseInt(input.value);
+            if (value > 1) input.value = value - 1;
         };
 
         window.increaseQuantity = function() {
-            const input = document.getElementById('quantity');
-            if (parseInt(input.value) < 10) {
-                input.value = parseInt(input.value) + 1;
-            }
+            let input = document.getElementById('quantity');
+            let value = parseInt(input.value);
+            if (value < 10) input.value = value + 1;
         };
 
+        // Add to cart
         window.addToCart = function() {
-            const quantity = document.getElementById('quantity').value;
-            alert(`${product.name} (x${quantity}) added to cart!`);
+            let quantity = document.getElementById('quantity').value;
+            
+            // Get existing cart
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Check if product already in cart
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += parseInt(quantity);
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: parseInt(quantity),
+                    image: product.image
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Show notification
+            alert(product.name + ' (x' + quantity + ') added to cart!');
             
             // Animate cart
-            const cartIcon = document.querySelector('.fa-shopping-cart');
+            let cartIcon = document.querySelector('.fa-shopping-cart');
             cartIcon.style.transform = 'scale(1.2)';
             setTimeout(() => {
                 cartIcon.style.transform = 'scale(1)';
             }, 200);
         };
 
+        // Wishlist toggle
         window.toggleWishlist = function(btn) {
-            const icon = btn.querySelector('i');
+            let icon = btn.querySelector('i');
             if (icon.classList.contains('far')) {
                 icon.classList.remove('far');
                 icon.classList.add('fas');
@@ -867,6 +1154,29 @@
                 btn.style.transform = 'scale(1)';
             }, 200);
         };
+
+        // Load related products
+        function loadRelatedProducts() {
+            const relatedGrid = document.getElementById('related-grid');
+            
+            // Get products from same category, excluding current product
+            const related = products
+                .filter(p => p.category === product.category && p.id !== product.id)
+                .slice(0, 4);
+            
+            relatedGrid.innerHTML = related.map(p => `
+                <div class="related-card" onclick="location.href='product-details.html?id=${p.id}'">
+                    <img src="${p.image}" alt="${p.name}">
+                    <div class="related-info">
+                        <h4>${p.name}</h4>
+                        <span class="related-price">$${p.price.toFixed(2)}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize
+        loadProductDetails();
     </script>
 </body>
 </html>
