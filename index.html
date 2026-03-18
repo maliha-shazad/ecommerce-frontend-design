@@ -28,18 +28,175 @@
             justify-content: space-between;
             align-items: center;
             font-size: 14px;
+            position: relative;
+            z-index: 1001;
         }
 
         .top-bar-left {
             display: flex;
             gap: 30px;
+            position: relative;
         }
 
-        .top-bar-left span {
+        /* Dropdown Styles */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
             display: flex;
             align-items: center;
             gap: 5px;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            padding: 8px 12px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .dropbtn:hover {
+            background: rgba(255,255,255,0.1);
+        }
+
+        .dropbtn i {
+            font-size: 12px;
+            transition: transform 0.3s;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            border-radius: 8px;
+            z-index: 10000;
+            margin-top: 5px;
+            color: #1e293b;
+        }
+
+        .dropdown-content.show {
+            display: block !important;
+        }
+
+        .country-item {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
             cursor: pointer;
+            transition: all 0.2s;
+            border-bottom: 1px solid #e2e8f0;
+            background: white;
+            position: relative;
+            z-index: 10001;
+        }
+
+        .country-item:last-child {
+            border-bottom: none;
+        }
+
+        .country-item:hover {
+            background: #f1f5f9;
+        }
+
+        .country-item.selected {
+            background: #e6f0ff;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .country-item img {
+            width: 30px;
+            height: 20px;
+            object-fit: cover;
+            border-radius: 3px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            pointer-events: none;
+        }
+
+        .country-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            pointer-events: none;
+        }
+
+        .country-name {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .country-details {
+            display: flex;
+            gap: 10px;
+            font-size: 12px;
+            color: #64748b;
+        }
+
+        .currency-code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        /* Help Dropdown */
+        .help-item {
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-bottom: 1px solid #e2e8f0;
+            background: white;
+        }
+
+        .help-item:last-child {
+            border-bottom: none;
+        }
+
+        .help-item:hover {
+            background: #f1f5f9;
+        }
+
+        .help-item i {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            font-size: 14px;
+        }
+
+        .help-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .help-label {
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .help-value {
+            font-weight: 600;
+            font-size: 14px;
         }
 
         .top-bar-right {
@@ -52,6 +209,25 @@
             align-items: center;
             gap: 5px;
             cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .top-bar-right span:hover {
+            color: #3b82f6;
+        }
+
+        /* Selected Display */
+        .selected-display {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .selected-display img {
+            width: 20px;
+            height: 15px;
+            object-fit: cover;
+            border-radius: 2px;
         }
 
         /* Main Header */
@@ -150,17 +326,21 @@
             color: #64748b;
         }
 
-        .category-select {
+        .category-dropdown {
             display: flex;
             align-items: center;
             gap: 20px;
         }
 
-        .category-select select {
-            padding: 10px;
+        .category-dropdown select {
+            padding: 10px 15px;
             border: 1px solid #e2e8f0;
             border-radius: 5px;
             font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            background: white;
+            min-width: 150px;
         }
 
         .header-icons {
@@ -184,9 +364,10 @@
             position: absolute;
             top: -8px;
             right: -8px;
+            display: none;
         }
 
-        /* Hero Section with Background Image */
+        /* Hero Section */
         .hero {
             background-image: url('assests/background/Group 969.png');
             background-size: cover;
@@ -600,11 +781,50 @@
             color: #3b82f6;
         }
 
+        /* Footer Bottom with Get App */
         .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
             border-top: 1px solid #1e293b;
+            padding-top: 20px;
+        }
+
+        .footer-bottom-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .get-app {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .get-app:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .get-app img {
+            height: 30px;
+            width: auto;
+        }
+
+        .get-app span {
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .footer-bottom p {
             color: #94a3b8;
+            margin: 0;
         }
 
         /* Responsive */
@@ -645,6 +865,11 @@
             .footer-content {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .footer-bottom-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -663,15 +888,68 @@
 </head>
 <body>
 
-    <!-- Top Bar -->
+    <!-- Top Bar with Click-to-Toggle Dropdowns -->
     <div class="top-bar">
         <div class="top-bar-left">
-            <span><i class="fas fa-globe"></i> English - USD</span>
-            <span><i class="fas fa-truck"></i> Ship to</span>
+            <!-- Currency Dropdown -->
+            <div class="dropdown" id="currencyDropdown">
+                <button class="dropbtn" onclick="toggleDropdown('currencyMenu')">
+                    <span class="selected-display" id="currencyDisplay">
+                        <img src="assests/flags/US@2x.png" alt="USA" id="currencyFlag">
+                        <span>USD</span>
+                    </span>
+                    <i class="fas fa-chevron-down" id="currencyArrow"></i>
+                </button>
+                <div class="dropdown-content" id="currencyMenu"></div>
+            </div>
+
+            <!-- Ship To Dropdown (Flags) -->
+            <div class="dropdown" id="shipToDropdown">
+                <button class="dropbtn" onclick="toggleDropdown('countryMenu')">
+                    <span class="selected-display" id="countryDisplay">
+                        <img src="assests/flags/US@2x.png" alt="USA" id="selectedFlag">
+                        <span>United States</span>
+                    </span>
+                    <i class="fas fa-chevron-down" id="countryArrow"></i>
+                </button>
+                <div class="dropdown-content" id="countryMenu"></div>
+            </div>
+
+            <!-- Help Dropdown -->
+            <div class="dropdown" id="helpDropdown">
+                <button class="dropbtn" onclick="toggleDropdown('helpMenu')">
+                    <span>Help</span>
+                    <i class="fas fa-chevron-down" id="helpArrow"></i>
+                </button>
+                <div class="dropdown-content" id="helpMenu">
+                    <div class="help-item" onclick="contactHelp('email'); event.stopPropagation();">
+                        <i class="fas fa-envelope"></i>
+                        <div class="help-text">
+                            <span class="help-label">Email</span>
+                            <span class="help-value">support@brand.com</span>
+                        </div>
+                    </div>
+                    <div class="help-item" onclick="contactHelp('phone'); event.stopPropagation();">
+                        <i class="fas fa-phone"></i>
+                        <div class="help-text">
+                            <span class="help-label">Phone</span>
+                            <span class="help-value">+1 (800) 123-4567</span>
+                        </div>
+                    </div>
+                    <div class="help-item" onclick="contactHelp('chat'); event.stopPropagation();">
+                        <i class="fas fa-comment"></i>
+                        <div class="help-text">
+                            <span class="help-label">Live Chat</span>
+                            <span class="help-value">24/7 Support</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="top-bar-right">
-            <span>All category</span>
-            <span>Hot offers</span>
+            <span onclick="location.href='products.html?category=all'">All category</span>
+            <span onclick="location.href='products.html?category=hot'">Hot offers</span>
             <span>Menu item</span>
             <span>Help</span>
         </div>
@@ -689,12 +967,13 @@
             <div class="search-results" id="searchResults"></div>
         </div>
 
-        <div class="category-select">
-            <select>
-                <option>All Categories</option>
-                <option>Electronics</option>
-                <option>Fashion</option>
-                <option>Interior</option>
+        <div class="category-dropdown">
+            <select id="categorySelect" onchange="navigateToCategory()">
+                <option value="all">All Categories</option>
+                <option value="electronics">Electronics</option>
+                <option value="tech">Technology</option>
+                <option value="cloth">Clothing</option>
+                <option value="interior">Interior</option>
             </select>
         </div>
 
@@ -705,7 +984,7 @@
         </div>
     </div>
 
-    <!-- Hero Section with Background Image -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Latest trending</h1>
@@ -978,85 +1257,260 @@
                 </ul>
             </div>
         </div>
+
+        <!-- Get App Section with Logo from misc folder -->
         <div class="footer-bottom">
-            <p>© 2026 Brand. All rights reserved.</p>
+            <div class="footer-bottom-content">
+                <p>© 2026 Brand. All rights reserved.</p>
+                <div class="get-app" onclick="openAppStore()">
+                    <img src="assests/misc/market-button.png" alt="Get it on App Store">
+                    <span>Get App</span>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Product Database for search
-        const allProducts = [
-            { id: 1, name: 'Brown Faux Fur Jacket', price: 89.99, category: 'Clothing', image: 'assests/cloth/2 1.png' },
-            { id: 2, name: 'Slim-Fit Cargo Pants', price: 49.99, category: 'Clothing', image: 'assests/cloth/Bitmap (2).png' },
-            { id: 3, name: 'Cotton T-Shirt', price: 24.99, category: 'Clothing', image: 'assests/cloth/Bitmap.png' },
-            { id: 7, name: 'Comfortable Sofa Chair', price: 199.99, category: 'Interior', image: 'assests/interior/1.png' },
-            { id: 8, name: 'Handmade Terracotta Pot', price: 34.99, category: 'Interior', image: 'assests/interior/3.png' },
-            { id: 9, name: 'Modern Lamp', price: 59.99, category: 'Interior', image: 'assests/interior/6.png' },
-            { id: 10, name: 'Portable Adjustable Chair', price: 79.99, category: 'Interior', image: 'assests/interior/7.png' },
-            { id: 11, name: 'Kitchen Mixer', price: 129.99, category: 'Interior', image: 'assests/interior/8.png' },
-            { id: 12, name: 'Electric Juicer', price: 69.99, category: 'Interior', image: 'assests/interior/9.png' },
-            { id: 13, name: 'Decorative Plant', price: 29.99, category: 'Interior', image: 'assests/interior/image 89.png' },
-            { id: 14, name: 'Terracotta Pot', price: 34.99, category: 'Interior', image: 'assests/interior/image 90.png' },
-            { id: 16, name: 'Digital Camera', price: 249.99, category: 'Technology', image: 'assests/tech/6.png' },
-            { id: 17, name: 'Smart Watch', price: 179.99, category: 'Technology', image: 'assests/tech/8.png' },
-            { id: 18, name: 'iPhone', price: 999.99, category: 'Technology', image: 'assests/tech/image 23.png' },
-            { id: 19, name: 'Premium Headphones', price: 149.99, category: 'Technology', image: 'assests/tech/image 29.png' },
-            { id: 20, name: 'Tablet', price: 399.99, category: 'Technology', image: 'assests/tech/image 32.png' },
-            { id: 21, name: 'iPhone', price: 899.99, category: 'Technology', image: 'assests/tech/image 33.png' },
-            { id: 22, name: 'Laptop', price: 899.99, category: 'Technology', image: 'assests/tech/image 34.png' },
-            { id: 23, name: 'Thormus Device', price: 199.99, category: 'Technology', image: 'assests/tech/image 85.png' },
-            { id: 24, name: 'Wireless Headphones', price: 89.99, category: 'Technology', image: 'assests/tech/image 86.png' }
+        // Country database with flags, currencies, and codes
+        const countries = [
+            { 
+                name: 'United States', 
+                code: 'US', 
+                currency: 'USD', 
+                currencySymbol: '$',
+                flag: 'assests/flags/US@2x.png',
+                phone: '+1'
+            },
+            { 
+                name: 'United Kingdom', 
+                code: 'GB', 
+                currency: 'GBP', 
+                currencySymbol: '£',
+                flag: 'assests/flags/GB@2x.png',
+                phone: '+44'
+            },
+            { 
+                name: 'UAE', 
+                code: 'AE', 
+                currency: 'AED', 
+                currencySymbol: 'د.إ',
+                flag: 'assests/flags/AE@2x.png',
+                phone: '+971'
+            },
+            { 
+                name: 'France', 
+                code: 'FR', 
+                currency: 'EUR', 
+                currencySymbol: '€',
+                flag: 'assests/flags/FR@2x.png',
+                phone: '+33'
+            },
+            { 
+                name: 'Germany', 
+                code: 'DE', 
+                currency: 'EUR', 
+                currencySymbol: '€',
+                flag: 'assests/flags/DE@2x.png',
+                phone: '+49'
+            },
+            { 
+                name: 'Italy', 
+                code: 'IT', 
+                currency: 'EUR', 
+                currencySymbol: '€',
+                flag: 'assests/flags/IT@2x.png',
+                phone: '+39'
+            },
+            { 
+                name: 'Russia', 
+                code: 'RU', 
+                currency: 'RUB', 
+                currencySymbol: '₽',
+                flag: 'assests/flags/RU@2x.png',
+                phone: '+7'
+            },
+            { 
+                name: 'Denmark', 
+                code: 'DK', 
+                currency: 'DKK', 
+                currencySymbol: 'kr',
+                flag: 'assests/flags/DK@2x.png',
+                phone: '+45'
+            }
         ];
 
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const searchButton = document.getElementById('searchButton');
-        const searchResults = document.getElementById('searchResults');
+        // Current selected country (default: USA)
+        let currentCountry = countries[0];
 
-        function performSearch(query) {
-            if (query.length < 2) {
-                searchResults.style.display = 'none';
+        // Toggle dropdown on click
+        window.toggleDropdown = function(menuId) {
+            const menu = document.getElementById(menuId);
+            const allMenus = ['currencyMenu', 'countryMenu', 'helpMenu'];
+            
+            // Close all other dropdowns
+            allMenus.forEach(id => {
+                if (id !== menuId) {
+                    const otherMenu = document.getElementById(id);
+                    if (otherMenu) otherMenu.classList.remove('show');
+                }
+            });
+            
+            // Toggle current dropdown
+            menu.classList.toggle('show');
+            
+            // Rotate arrow
+            const arrowId = menuId === 'currencyMenu' ? 'currencyArrow' : 
+                           (menuId === 'countryMenu' ? 'countryArrow' : 'helpArrow');
+            const arrow = document.getElementById(arrowId);
+            if (arrow) {
+                arrow.style.transform = menu.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0)';
+            }
+        };
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(event) {
+            const isDropdownButton = event.target.closest('.dropbtn');
+            const isDropdownContent = event.target.closest('.dropdown-content');
+            
+            if (!isDropdownButton && !isDropdownContent) {
+                // Close all dropdowns
+                document.querySelectorAll('.dropdown-content').forEach(menu => {
+                    menu.classList.remove('show');
+                });
+                // Reset all arrows
+                document.querySelectorAll('.dropbtn i').forEach(arrow => {
+                    arrow.style.transform = 'rotate(0)';
+                });
+            }
+        });
+
+        // Initialize dropdowns
+        function initializeDropdowns() {
+            const currencyMenu = document.getElementById('currencyMenu');
+            const countryMenu = document.getElementById('countryMenu');
+            
+            // Clear existing content
+            currencyMenu.innerHTML = '';
+            countryMenu.innerHTML = '';
+            
+            // Populate currency dropdown
+            countries.forEach(country => {
+                const item = document.createElement('div');
+                item.className = `country-item ${country.code === currentCountry.code ? 'selected' : ''}`;
+                item.setAttribute('onclick', `selectCountry('${country.code}'); event.stopPropagation();`);
+                item.innerHTML = `
+                    <img src="${country.flag}" alt="${country.name}">
+                    <div class="country-info">
+                        <span class="country-name">${country.name}</span>
+                        <div class="country-details">
+                            <span class="currency-code">${country.currency}</span>
+                            <span>${country.currencySymbol}</span>
+                        </div>
+                    </div>
+                `;
+                currencyMenu.appendChild(item);
+            });
+
+            // Populate country dropdown
+            countries.forEach(country => {
+                const item = document.createElement('div');
+                item.className = `country-item ${country.code === currentCountry.code ? 'selected' : ''}`;
+                item.setAttribute('onclick', `selectCountry('${country.code}'); event.stopPropagation();`);
+                item.innerHTML = `
+                    <img src="${country.flag}" alt="${country.name}">
+                    <div class="country-info">
+                        <span class="country-name">${country.name}</span>
+                        <span class="country-details">${country.currency} · ${country.phone}</span>
+                    </div>
+                `;
+                countryMenu.appendChild(item);
+            });
+        }
+
+        // Select country function
+        window.selectCountry = function(countryCode) {
+            // Find the selected country by code
+            const selectedCountry = countries.find(c => c.code === countryCode);
+            if (!selectedCountry) {
+                console.error('Country not found:', countryCode);
                 return;
             }
             
-            const results = allProducts.filter(product => 
-                product.name.toLowerCase().includes(query.toLowerCase()) ||
-                product.category.toLowerCase().includes(query.toLowerCase())
-            );
+            currentCountry = selectedCountry;
             
-            if (results.length === 0) {
-                searchResults.innerHTML = '<div class="no-results">No products found</div>';
-            } else {
-                searchResults.innerHTML = results.map(product => `
-                    <div class="search-result-item" onclick="location.href='product-details.html?id=${product.id}'">
-                        <img src="${product.image}" alt="${product.name}">
-                        <div class="search-result-info">
-                            <h4>${product.name}</h4>
-                            <p>$${product.price.toFixed(2)}</p>
-                        </div>
-                    </div>
-                `).join('');
-            }
-            searchResults.style.display = 'block';
-        }
-
-        if (searchInput) {
-            searchInput.addEventListener('input', function(e) {
-                performSearch(e.target.value);
+            // Update currency display
+            document.getElementById('currencyFlag').src = selectedCountry.flag;
+            document.getElementById('currencyDisplay').innerHTML = `
+                <img src="${selectedCountry.flag}" alt="${selectedCountry.name}">
+                <span>${selectedCountry.currency}</span>
+            `;
+            
+            // Update country display
+            document.getElementById('selectedFlag').src = selectedCountry.flag;
+            document.getElementById('countryDisplay').innerHTML = `
+                <img src="${selectedCountry.flag}" alt="${selectedCountry.name}">
+                <span>${selectedCountry.name}</span>
+            `;
+            
+            // Remove selected class from all items
+            document.querySelectorAll('.country-item').forEach(item => {
+                item.classList.remove('selected');
             });
-
-            searchButton.addEventListener('click', function() {
-                performSearch(searchInput.value);
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
-                    searchResults.style.display = 'none';
+            
+            // Add selected class to items with matching country code
+            document.querySelectorAll('.country-item').forEach(item => {
+                const onclickAttr = item.getAttribute('onclick');
+                if (onclickAttr && onclickAttr.includes(`'${countryCode}'`)) {
+                    item.classList.add('selected');
                 }
             });
-        }
+            
+            // Close all dropdowns after selection
+            document.querySelectorAll('.dropdown-content').forEach(menu => {
+                menu.classList.remove('show');
+            });
+            
+            // Reset all arrows
+            document.querySelectorAll('.dropbtn i').forEach(arrow => {
+                arrow.style.transform = 'rotate(0)';
+            });
+            
+            // Show notification
+            showNotification(`Currency changed to ${selectedCountry.currency} (${selectedCountry.name})`);
+        };
 
-        // Category switching
+        // Help dropdown functions
+        window.contactHelp = function(type) {
+            if (type === 'email') {
+                window.location.href = 'mailto:support@brand.com';
+            } else if (type === 'phone') {
+                window.location.href = 'tel:+18001234567';
+            } else if (type === 'chat') {
+                alert('Live chat would open here. This is a demo.');
+            }
+            
+            // Close help dropdown after action
+            document.getElementById('helpMenu').classList.remove('show');
+            document.getElementById('helpArrow').style.transform = 'rotate(0)';
+        };
+
+        // Navigation function for category dropdown
+        window.navigateToCategory = function() {
+            const select = document.getElementById('categorySelect');
+            const category = select.value;
+            
+            if (category === 'all') {
+                location.href = 'products.html';
+            } else if (category === 'electronics' || category === 'tech') {
+                location.href = 'products.html?category=tech';
+            } else if (category === 'cloth') {
+                location.href = 'products.html?category=cloth';
+            } else if (category === 'interior') {
+                location.href = 'products.html?category=interior';
+            }
+        };
+
+        // Category switching for homepage tabs
         window.switchCategory = function(category) {
             const electronics = document.querySelectorAll('.electronics');
             const home = document.querySelectorAll('.home');
@@ -1123,11 +1577,15 @@
             const wishlistCount = document.getElementById('wishlistCount');
             
             const cartTotal = cart.reduce((sum, item) => sum + item.quantity, 0);
-            cartCount.textContent = cartTotal;
-            cartCount.style.display = cartTotal > 0 ? 'inline' : 'none';
+            if (cartCount) {
+                cartCount.textContent = cartTotal;
+                cartCount.style.display = cartTotal > 0 ? 'inline' : 'none';
+            }
             
-            wishlistCount.textContent = wishlist.length;
-            wishlistCount.style.display = wishlist.length > 0 ? 'inline' : 'none';
+            if (wishlistCount) {
+                wishlistCount.textContent = wishlist.length;
+                wishlistCount.style.display = wishlist.length > 0 ? 'inline' : 'none';
+            }
         }
 
         // Form handlers
@@ -1143,9 +1601,125 @@
             e.target.reset();
         };
 
-        // Initialize
-        startCountdown();
-        updateCounts();
+        // Get App function
+        window.openAppStore = function() {
+            window.open('https://apps.apple.com', '_blank');
+        };
+
+        // Notification function
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #3b82f6;
+                color: white;
+                padding: 12px 20px;
+                border-radius: 5px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 9999;
+                animation: slideIn 0.3s ease;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 2000);
+        }
+
+        // Search functionality
+        const allProducts = [
+            { id: 1, name: 'Brown Faux Fur Jacket', price: 89.99, category: 'Clothing', image: 'assests/cloth/2 1.png' },
+            { id: 2, name: 'Slim-Fit Cargo Pants', price: 49.99, category: 'Clothing', image: 'assests/cloth/Bitmap (2).png' },
+            { id: 3, name: 'Cotton T-Shirt', price: 24.99, category: 'Clothing', image: 'assests/cloth/Bitmap.png' },
+            { id: 7, name: 'Comfortable Sofa Chair', price: 199.99, category: 'Interior', image: 'assests/interior/1.png' },
+            { id: 8, name: 'Handmade Terracotta Pot', price: 34.99, category: 'Interior', image: 'assests/interior/3.png' },
+            { id: 9, name: 'Modern Lamp', price: 59.99, category: 'Interior', image: 'assests/interior/6.png' },
+            { id: 10, name: 'Portable Adjustable Chair', price: 79.99, category: 'Interior', image: 'assests/interior/7.png' },
+            { id: 11, name: 'Kitchen Mixer', price: 129.99, category: 'Interior', image: 'assests/interior/8.png' },
+            { id: 12, name: 'Electric Juicer', price: 69.99, category: 'Interior', image: 'assests/interior/9.png' },
+            { id: 16, name: 'Digital Camera', price: 249.99, category: 'Technology', image: 'assests/tech/6.png' },
+            { id: 17, name: 'Smart Watch', price: 179.99, category: 'Technology', image: 'assests/tech/8.png' },
+            { id: 18, name: 'iPhone', price: 999.99, category: 'Technology', image: 'assests/tech/image 23.png' },
+            { id: 19, name: 'Premium Headphones', price: 149.99, category: 'Technology', image: 'assests/tech/image 29.png' },
+            { id: 22, name: 'Laptop', price: 899.99, category: 'Technology', image: 'assests/tech/image 34.png' },
+            { id: 23, name: 'Thormus Device', price: 199.99, category: 'Technology', image: 'assests/tech/image 85.png' },
+            { id: 24, name: 'Wireless Headphones', price: 89.99, category: 'Technology', image: 'assests/tech/image 86.png' }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const searchResults = document.getElementById('searchResults');
+
+        function performSearch(query) {
+            if (query.length < 2) {
+                searchResults.style.display = 'none';
+                return;
+            }
+            
+            const results = allProducts.filter(product => 
+                product.name.toLowerCase().includes(query.toLowerCase()) ||
+                product.category.toLowerCase().includes(query.toLowerCase())
+            );
+            
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No products found</div>';
+            } else {
+                searchResults.innerHTML = results.map(product => `
+                    <div class="search-result-item" onclick="location.href='product-details.html?id=${product.id}'">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="search-result-info">
+                            <h4>${product.name}</h4>
+                            <p>$${product.price.toFixed(2)}</p>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            searchResults.style.display = 'block';
+        }
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function(e) {
+                performSearch(e.target.value);
+            });
+
+            searchButton.addEventListener('click', function() {
+                performSearch(searchInput.value);
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
+                    searchResults.style.display = 'none';
+                }
+            });
+        }
+
+        // Add animation styles
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeDropdowns();
+            startCountdown();
+            updateCounts();
+        });
     </script>
 </body>
 </html>
