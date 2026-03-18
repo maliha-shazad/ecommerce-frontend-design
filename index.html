@@ -6,7 +6,7 @@
     <title>Brand - Supplier Marketplace</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
+  <style>
     * {
         margin: 0;
         padding: 0;
@@ -512,7 +512,7 @@
         margin-top: 5px;
     }
 
-           /* Service Section */
+    /* Service Section */
     .service-section {
         padding: 60px 40px;
         background: #f8fafc;
@@ -564,7 +564,7 @@
         justify-content: center;
     }
 
-            /* Recommended Items */
+    /* Recommended Items */
     .recommended-section {
         padding: 60px 40px;
         max-width: 1400px;
@@ -631,7 +631,7 @@
         line-height: 1.3;
         display: -webkit-box;
         -webkit-line-clamp: 2;
-        line-clamp: 2; 
+        line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
     }
@@ -668,7 +668,7 @@
         background: #3b82f6;
     }
 
-          /* Products Grid */
+    /* Products Grid - Fixed */
     .products-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -697,12 +697,13 @@
 
     .product-image {
         width: 100%;
-        height: 160px;
+        height: 180px;
         background: #f8fafc;
         overflow: hidden;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 15px;
     }
 
     .product-image img {
@@ -717,7 +718,7 @@
     }
 
     .product-info {
-        padding: 12px;
+        padding: 15px;
         flex-grow: 1;
         display: flex;
         flex-direction: column;
@@ -725,113 +726,113 @@
 
     .product-name {
         font-weight: 600;
-        font-size: 14px;
+        font-size: 15px;
         color: #1e293b;
-        margin-bottom: 4px;
-        line-height: 1.3;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-         line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        min-height: 36px;
+        margin-bottom: 5px;
+        line-height: 1.4;
+        display: block;
+        overflow: visible;
+        min-height: auto;
+        white-space: normal;
+        word-break: break-word;
     }
 
     .product-from {
-        font-size: 11px;
+        font-size: 12px;
         color: #64748b;
-        margin-bottom: 4px;
+        margin-bottom: 5px;
         text-transform: uppercase;
-        letter-spacing: 0.3px;
+        letter-spacing: 0.5px;
     }
 
     .product-price {
         color: #3b82f6;
         font-weight: 700;
-        font-size: 15px;
+        font-size: 16px;
         margin-top: auto;
     }
-   /* Suppliers by Region */
-.suppliers-section {
-    padding: 60px 40px;
-    background: #f8fafc;
-    max-width: 1400px;
-    margin: 0 auto;
-}
 
-.suppliers-section h2 {
-    font-size: 32px;
-    margin-bottom: 40px;
-    text-align: center;
-    color: #1e293b;
-}
+    /* Suppliers by Region */
+    .suppliers-section {
+        padding: 60px 40px;
+        background: #f8fafc;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
 
-.suppliers-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-}
+    .suppliers-section h2 {
+        font-size: 32px;
+        margin-bottom: 40px;
+        text-align: center;
+        color: #1e293b;
+    }
 
-.supplier-card {
-    background: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    transition: transform 0.3s;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-}
+    .suppliers-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
 
-.supplier-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
+    .supplier-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        transition: transform 0.3s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+    }
 
-.supplier-flag {
-    height: 100px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
-    padding: 15px;
-}
+    .supplier-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
 
-.supplier-flag img {
-    width: auto;
-    height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-}
+    .supplier-flag {
+        height: 100px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+        padding: 15px;
+    }
 
-.supplier-card:hover .supplier-flag img {
-    transform: scale(1.05);
-}
+    .supplier-flag img {
+        width: auto;
+        height: 100%;
+        max-width: 100%;
+        object-fit: contain;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease;
+    }
 
-.supplier-info {
-    padding: 15px;
-    text-align: center;
-    background: white;
-}
+    .supplier-card:hover .supplier-flag img {
+        transform: scale(1.05);
+    }
 
-.supplier-country {
-    font-size: 16px;
-    font-weight: 700;
-    color: #1e293b;
-    margin-bottom: 5px;
-    letter-spacing: 0.5px;
-}
+    .supplier-info {
+        padding: 15px;
+        text-align: center;
+        background: white;
+    }
 
-.supplier-name {
-    color: #3b82f6;
-    font-weight: 600;
-    font-size: 13px;
-    word-break: break-word;
-}
+    .supplier-country {
+        font-size: 16px;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 5px;
+        letter-spacing: 0.5px;
+    }
+
+    .supplier-name {
+        color: #3b82f6;
+        font-weight: 600;
+        font-size: 13px;
+        word-break: break-word;
+    }
 
     /* Quote Section */
     .quote-section {
@@ -927,7 +928,7 @@
         background: #2563eb;
     }
 
-    /* Newsletter */
+    /* Newsletter Section */
     .newsletter {
         background: #1e293b;
         color: white;
@@ -935,28 +936,38 @@
         text-align: center;
     }
 
+    .newsletter-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
     .newsletter h2 {
         font-size: 32px;
         margin-bottom: 15px;
+        color: white;
     }
 
     .newsletter p {
         color: #cbd5e1;
         margin-bottom: 30px;
+        font-size: 16px;
+        line-height: 1.5;
     }
 
     .newsletter-form {
         display: flex;
         max-width: 500px;
         margin: 0 auto;
+        gap: 10px;
     }
 
     .newsletter-form input {
         flex: 1;
         padding: 15px 20px;
         border: none;
-        border-radius: 5px 0 0 5px;
+        border-radius: 5px;
         font-family: 'Inter', sans-serif;
+        font-size: 16px;
     }
 
     .newsletter-form button {
@@ -964,9 +975,15 @@
         background: #3b82f6;
         color: white;
         border: none;
-        border-radius: 0 5px 5px 0;
+        border-radius: 5px;
         font-weight: 600;
         cursor: pointer;
+        white-space: nowrap;
+        transition: background 0.3s;
+    }
+
+    .newsletter-form button:hover {
+        background: #2563eb;
     }
 
     /* Footer */
@@ -1059,7 +1076,9 @@
         margin: 0;
     }
 
-    /* Responsive */
+    /* ========== ENHANCED MOBILE RESPONSIVE ========== */
+
+    /* Tablets and small desktops */
     @media (max-width: 1024px) {
         .deals-grid,
         .service-grid,
@@ -1067,55 +1086,455 @@
         .suppliers-grid {
             grid-template-columns: repeat(3, 1fr);
         }
+        
+        .products-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
     }
 
+    /* Medium devices (tablets, 768px and down) */
     @media (max-width: 768px) {
+        /* Top Bar */
         .top-bar {
             flex-direction: column;
             gap: 10px;
+            padding: 10px 15px;
         }
+        
+        .top-bar-left {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .top-bar-right {
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .dropbtn {
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+        
+        /* Main Header */
         .main-header {
             flex-direction: column;
             gap: 15px;
+            padding: 15px;
         }
+        
+        .logo img {
+            height: 35px;
+        }
+        
         .search-bar {
             max-width: 100%;
-            margin: 10px 0;
+            margin: 5px 0;
         }
+        
+        .search-bar input {
+            padding: 10px;
+            font-size: 14px;
+        }
+        
+        .search-bar button {
+            padding: 10px 15px;
+            white-space: nowrap;
+        }
+        
+        .category-dropdown {
+            width: 100%;
+        }
+        
+        .category-dropdown select {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 60px 15px;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+        }
+        
+        .hero h2 {
+            font-size: 24px;
+        }
+        
+        /* Grids */
         .deals-grid,
         .service-grid,
         .recommended-grid,
         .suppliers-grid {
             grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
         }
+        
+        .deals-section,
+        .service-section,
+        .recommended-section,
+        .suppliers-section {
+            padding: 40px 15px;
+        }
+        
+        .section-header {
+            flex-direction: column;
+            text-align: center;
+            gap: 15px;
+        }
+        
+        .section-header h3 {
+            font-size: 22px;
+        }
+        
+        .countdown {
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .countdown-item {
+            min-width: 60px;
+            padding: 8px 10px;
+        }
+        
+        .countdown-number {
+            font-size: 20px;
+        }
+        
+        /* Deal Cards */
+        .deal-image {
+            height: 120px;
+        }
+        
+        .deal-title {
+            font-size: 13px;
+        }
+        
+        .deal-price {
+            font-size: 16px;
+        }
+        
+        /* Service Cards */
+        .service-card h3 {
+            font-size: 13px;
+            min-height: 50px;
+            padding: 12px;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            padding: 0 15px 40px;
+        }
+        
+        .product-image {
+            height: 140px;
+        }
+        
+        .product-name {
+            font-size: 13px;
+        }
+        
+        .product-price {
+            font-size: 14px;
+        }
+        
+        /* Category Tabs */
+        .category-tabs {
+            padding: 0 15px;
+            gap: 15px;
+            overflow-x: auto;
+            white-space: nowrap;
+            justify-content: flex-start;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .category-tab {
+            padding: 12px 0;
+            font-size: 14px;
+        }
+        
+        /* Quote Section */
         .quote-container {
             grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 0 15px;
         }
+        
+        .quote-left {
+            text-align: center;
+        }
+        
+        .quote-left h2 {
+            font-size: 28px;
+        }
+        
+        .quote-form {
+            padding: 30px 20px;
+        }
+        
+        .quantity-row {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .quantity-row select {
+            width: 100%;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 40px 15px;
+        }
+        
+        .newsletter h2 {
+            font-size: 28px;
+        }
+        
+        .newsletter-form {
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .newsletter-form input {
+            border-radius: 5px;
+        }
+        
+        .newsletter-form button {
+            border-radius: 5px;
+        }
+        
+        /* Footer */
         .footer-content {
             grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            padding: 0 15px;
         }
+        
         .footer-bottom-content {
             flex-direction: column;
             gap: 15px;
             text-align: center;
+            padding: 0 15px;
+        }
+        
+        .get-app {
+            width: 100%;
+            justify-content: center;
         }
     }
 
+    /* Small devices (phones, 480px and down) */
     @media (max-width: 480px) {
+        /* Top Bar */
+        .top-bar-left {
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .top-bar-right {
+            gap: 12px;
+        }
+        
+        .dropbtn {
+            width: 100%;
+            justify-content: center;
+        }
+        
+        /* Dropdowns */
+        .dropdown-content {
+            position: fixed;
+            top: auto;
+            left: 10px;
+            right: 10px;
+            width: auto;
+            max-height: 80vh;
+            z-index: 10000;
+        }
+        
+        /* Hero Section */
+        .hero h1 {
+            font-size: 28px;
+        }
+        
+        .hero h2 {
+            font-size: 18px;
+        }
+        
+        .hero .learn-more {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+        
+        /* Grids - All to 1 column */
         .deals-grid,
         .service-grid,
         .recommended-grid,
         .suppliers-grid,
+        .products-grid,
         .footer-content {
             grid-template-columns: 1fr;
+            gap: 15px;
         }
-        .top-bar-left,
-        .top-bar-right {
-            flex-wrap: wrap;
-            justify-content: center;
+        
+        .deals-section,
+        .service-section,
+        .recommended-section,
+        .suppliers-section {
+            padding: 30px 15px;
+        }
+        
+        .section-header h3 {
+            font-size: 20px;
+        }
+        
+        /* Countdown */
+        .countdown {
+            gap: 5px;
+        }
+        
+        .countdown-item {
+            min-width: 45px;
+            padding: 6px 8px;
+        }
+        
+        .countdown-number {
+            font-size: 16px;
+        }
+        
+        .countdown-label {
+            font-size: 10px;
+        }
+        
+        /* Deal Cards */
+        .deal-card {
+            padding: 15px;
+        }
+        
+        .deal-image {
+            height: 150px;
+        }
+        
+        /* Service Cards */
+        .service-card img {
+            height: 140px;
+        }
+        
+        /* Product Cards */
+        .product-image {
+            height: 160px;
+        }
+        
+        .product-name {
+            font-size: 14px;
+        }
+        
+        /* Quote Section */
+        .quote-left h2 {
+            font-size: 24px;
+        }
+        
+        .quote-left p {
+            font-size: 16px;
+        }
+        
+        .quote-form h3 {
+            font-size: 20px;
+        }
+        
+        /* Search Results */
+        .search-results {
+            position: fixed;
+            top: auto;
+            left: 10px;
+            right: 10px;
+            max-height: 70vh;
+        }
+        
+        .search-result-item {
+            padding: 10px;
+        }
+        
+        .search-result-item img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        /* Footer */
+        .footer-section h4 {
+            font-size: 15px;
+        }
+        
+        .footer-section ul li {
+            font-size: 13px;
+        }
+        
+        .get-app img {
+            height: 25px;
+        }
+        
+        .get-app span {
+            font-size: 13px;
         }
     }
-    </style>
+
+    /* Extra small devices (very small phones, 360px and down) */
+    @media (max-width: 360px) {
+        .hero h1 {
+            font-size: 24px;
+        }
+        
+        .hero h2 {
+            font-size: 16px;
+        }
+        
+        .countdown-item {
+            min-width: 40px;
+            padding: 4px 6px;
+        }
+        
+        .countdown-number {
+            font-size: 14px;
+        }
+        
+        .countdown-label {
+            font-size: 9px;
+        }
+        
+        .product-image {
+            height: 140px;
+        }
+        
+        .deal-image {
+            height: 120px;
+        }
+    }
+
+    /* Fix for touch devices */
+    @media (hover: none) and (pointer: coarse) {
+        .dropbtn:hover,
+        .product-card:hover,
+        .deal-card:hover,
+        .service-card:hover,
+        .recommended-card:hover,
+        .supplier-card:hover {
+            transform: none;
+        }
+        
+        .dropbtn:active,
+        .product-card:active,
+        .deal-card:active {
+            transform: scale(0.98);
+        }
+    }
+</style>
 </head>
 <body>
 
@@ -1561,46 +1980,48 @@
     </div>
 </section>
 
-    <!-- Quote Section -->
-    <section class="quote-section">
-        <div class="quote-container">
-            <div class="quote-left">
-                <h2>An easy way to send requests to all suppliers</h2>
-                <p>Do try us to get amazing discounts and special offers</p>
-            </div>
-            <div class="quote-form">
-                <h3>Send quote to suppliers</h3>
-                <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
-                    <div class="form-group">
-                        <label>What item do you need?</label>
-                        <textarea placeholder="Type more details..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Quantity</label>
-                        <div class="quantity-row">
-                            <input type="number" value="1" min="1">
-                            <select>
-                                <option>Pcs</option>
-                                <option>Box</option>
-                                <option>Kg</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="submit" class="send-inquiry">Send inquiry</button>
-                </form>
-            </div>
+   <!-- Quote Section -->
+<section class="quote-section">
+    <div class="quote-container">
+        <div class="quote-left">
+            <h2>An easy way to send requests to all suppliers</h2>
+            <p>Do try us to get amazing discounts and special offers</p>
         </div>
-    </section>
+        <div class="quote-form">
+            <h3>Send quote to suppliers</h3>
+            <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
+                <div class="form-group">
+                    <label>What item do you need?</label>
+                    <textarea placeholder="Type more details..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Quantity</label>
+                    <div class="quantity-row">
+                        <input type="number" value="1" min="1">
+                        <select>
+                            <option>Pcs</option>
+                            <option>Box</option>
+                            <option>Kg</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="send-inquiry">Send inquiry</button>
+            </form>
+        </div>
+    </div>
+</section>
 
-    <!-- Newsletter -->
-    <section class="newsletter">
+<!-- Newsletter -->
+<section class="newsletter">
+    <div class="newsletter-container">
         <h2>Subscribe to our newsletter</h2>
         <p>Get daily news on upcoming offers from many suppliers all over the world</p>
         <form class="newsletter-form" onsubmit="handleNewsletter(event)">
             <input type="email" placeholder="Enter your email" required>
             <button type="submit">Subscribe</button>
         </form>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>
